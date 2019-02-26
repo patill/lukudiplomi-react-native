@@ -18,7 +18,7 @@ Esimerkki:
 
 Esimerkin läpikäynti:
 
-- Ensin hakasulkeissa luokka-asteen nimi. Tämä näkyy luokka-asteen valintaruudussa.
+- Ensin hakasulkeissa _luokka-asteen nimi_. Tämä näkyy luokka-asteen valintaruudussa.
 - Aaltosulkeet, joiden sisälle tulee tämän lohkon varsinainen sisältö
   - Hakasulkeet, joiden sisällä on kentän nimi
   - Hakasulkeiden jälkeen kaksoispiste
