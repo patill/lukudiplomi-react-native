@@ -19,20 +19,20 @@ Olettaen, että edellä mainitut ohjelmistot on asennettu ja ne toimivat, voit e
 
 **Lähdekoodi.** Kloonaa (tai vaihtoehtoisesti lataa .zip-paketti) lähdekoodin sisältävä repository.
 
-```
+```bash
 $ git clone https://github.com/Tampereen-kaupunginkirjasto/lukudiplomi-react-native.git
 ```
 
 **Riippuvuudet.** Asenna riippuvuudet. Tarvittavat riippuvuudet löytyvät `package.json`-tiedoston `dependencies`-kohdasta. Ne asennetaan seuraavilla komennoilla:
 
-```
+```bash
 $ cd lukudiplomi-react-native
 $ npm install
 ```
 
 Luo myös Android ja iOS -kansiot seuraavasti:
 
-```
+```bash
 $ ./node_modules/.bin/react-native android
 ```
 
@@ -45,7 +45,7 @@ Jos edellisen komennon yhteydessä esiintyy ongelmia, kokeile seuraavia ratkaisu
 
 Kun asennus on valmis, käynnistä Android-emulaattori. Voit tehdä tämän joko komentoriviltä tai sitten Android Studion kautta. Kun Android-emulaattori on käynnissä, luo ja asenna sovelluspaketti (APK) seuraavasti:
 
-```
+```bash
 $ npm run android
 ```
 
