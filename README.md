@@ -6,10 +6,10 @@ Katso lisätietoja osoitteesta <https://piki.verkkokirjasto.fi/web/arena/lukudip
 
 Kehittääksesi sovellusta eteenpäin tai tehdäksesi vain oman version nykyisestä lähdekoodista, tarvitset seuraavat ohjelmistot:
 
-- Git (valinnainen; voit myös vain ladata lähdekoodit .zip-pakettina)
-- NodeJS ja NPM
-- Editori (esim. Atom, Visual Studio Code, jne.)
-- Android Studio ja sen mukana tulevat työkalut jne., mm. emulaattori ja SDK
+- [Git](https://git-scm.com) (valinnainen; voit myös vain ladata lähdekoodit .zip-pakettina)
+- [NodeJS ja NPM](https://nodejs.org/en/)
+- Editori (esim. [Atom](https://atom.io), [Visual Studio Code](https://code.visualstudio.com), jne.)
+- [Android Studio](https://developer.android.com/studio) ja sen mukana tulevat työkalut jne., mm. emulaattori ja SDK
 
 ### Vaiheet
 
