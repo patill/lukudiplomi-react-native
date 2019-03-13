@@ -54,3 +54,11 @@ Tämä komento luo sovelluspaketin ja asentaa sen emulaattoriin.
 #### iOS
 
 - TBD
+
+## Muu dokumentaatio
+
+Katso `docs`-kansiosta.
+
+## Lisenssi
+
+MIT-lisenssi. Katso lisätiedot LICENSE-tiedostosta.
