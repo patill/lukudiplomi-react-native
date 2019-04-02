@@ -1,10 +1,6 @@
 # iOS
 
-## Julkaisun valmistelua
-
-### Apple Developer -tunnukset
-
-- ...
+## Sekalaisia
 
 ### Ylimääriset fontit pois
 
