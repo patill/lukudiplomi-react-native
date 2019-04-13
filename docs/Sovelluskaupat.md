@@ -6,6 +6,8 @@ Google Play -kaupassa julkaistavan sovelluksen luominen.
 
 ### Linkkejä
 
+- TBD
+
 ## iOS
 
 ### Linkkejä
