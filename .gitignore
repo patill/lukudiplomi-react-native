@@ -1,7 +1,8 @@
 node_modules/
 .gradle/
 build/
-android/app/bin/
+android/
+ios/
 .project
 *.keystore
 *.zip
