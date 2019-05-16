@@ -67,7 +67,7 @@ export default class Help extends Component {
           <Text style={Styles.heading}>Yhteistyössä:</Text>
           <View style={Styles.collaboratorContainer}>
             <Image
-              source={require('../assets/piki.jpg')}
+              source={require('../assets/placeholder.jpg')}
               style={Styles.collaborator}
             />
             <Text style={Styles.text}>Tampereen kaupunginkirjasto</Text>
@@ -75,7 +75,7 @@ export default class Help extends Component {
 
           <View style={Styles.collaboratorContainer}>
             <Image
-              source={require('../assets/lki.jpg')}
+              source={require('../assets/placeholder.jpg')}
               style={Styles.collaborator}
             />
             <Text style={Styles.text}>Lastenkirjainstituutti</Text>
@@ -83,7 +83,7 @@ export default class Help extends Component {
 
           <View style={Styles.collaboratorContainer}>
             <Image
-              source={require('../assets/kirjavalitys.jpg')}
+              source={require('../assets/placeholder.jpg')}
               style={Styles.collaborator}
             />
             <Text style={Styles.text}>Kirjavälitys</Text>
