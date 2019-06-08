@@ -86,7 +86,7 @@ class ConfigDatasource {
    * If there's no such set, the value is null and it's returned. It's the
    * callers responsibility to check what this returns.
    */
-  getCurrentGrade = () => {
+  getCurrentGrade = async () => {
     let data = null;
     try {
       data = await AsyncStorage.getItem('lukudiplomi/aste');
