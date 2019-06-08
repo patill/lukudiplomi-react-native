@@ -34,23 +34,37 @@ $ npm install
 Luo myös Android ja iOS -kansiot seuraavasti:
 
 ```bash
-$ ./node_modules/.bin/react-native android
+$ ./node_modules/.bin/react-native eject
 ```
 
-Jos edellisen komennon yhteydessä esiintyy ongelmia, kokeile seuraavia ratkaisukeinoja asiaan (Stack Overflow ja Github Issue):
+Suorita myös seuraavat komennot:
 
-- https://stacksoverflow.com/questions/43723958/react-native-android-project-not-found-maybe-run-react-native-android-first#
-- https://github.com/facebook/react-native/issues/9312
+```bash
+$ ./node_modules/.bin/react-native link react-native-elements
+$ ./node_modules/.bin/react-native link react-native-vector-icons
+$ ./node_modules/.bin/react-native link react-native-gesture-handler
+$ ./node_modules/.bin/react-native link react-native-splash-screen
+```
+
+ja 
+
+```bash
+$ ./node_modules/.bin/react-native link react-navigation
+```
+
+Edellisen kohdalla katso myös ohjeet täältä:
+
+https://reactnavigation.org/docs/en/getting-started.html
 
 #### Android
 
 Kun asennus on valmis, käynnistä Android-emulaattori. Voit tehdä tämän joko komentoriviltä tai sitten Android Studion kautta. Kun Android-emulaattori on käynnissä, luo ja asenna sovelluspaketti (APK) seuraavasti:
 
 ```bash
-$ npm run android
+$ ./node_modules/.bin/react-native run-android
 ```
 
-Tämä komento luo sovelluspaketin ja asentaa sen emulaattoriin.
+Tämä komento luo sovelluspaketin ja asentaa sen emulaattoriin (tai vaihtoehtoisesti laitteeseen).
 
 #### iOS
 
