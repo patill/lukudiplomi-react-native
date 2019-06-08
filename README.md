@@ -46,7 +46,7 @@ $ ./node_modules/.bin/react-native link react-native-gesture-handler
 $ ./node_modules/.bin/react-native link react-native-splash-screen
 ```
 
-ja 
+ja
 
 ```bash
 $ ./node_modules/.bin/react-native link react-navigation
@@ -71,7 +71,7 @@ Tämä komento luo sovelluspaketin ja asentaa sen emulaattoriin (tai vaihtoehtoi
 iOS-versiota on helpointa testata simulaattorissa. Edellyttäen, että _Yleiset_-kohdan vaiheet on suoritettu ja Xcoden uusin versio on asennettu, voidaan sovellus ajaa komennolla
 
 ```bash
-$ npm run ios
+$ ./node_modules/.bin/react-native run-ios
 ```
 
 Komento tekee sovelluksesta asennettavan paketin ja asentaa sen simulaattoriin.
