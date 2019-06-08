@@ -86,7 +86,7 @@ const MenuButton = ({navigation}) => ({
 
 // Header options for all stacks
 const Header = {
-  navigationOptions: {
+  defaultNavigationOptions: {
     headerStyle: {
       backgroundColor: Colors.Blue
     },
@@ -102,7 +102,7 @@ const Header = {
 const BookStack = createStackNavigator({
   Home: {
     screen: BookList,
-    navigationOptions: MenuButton
+    defaultNavigationOptions: MenuButton
   },
   BookDetails: {
     screen: BookDetails
@@ -118,7 +118,7 @@ const BookStack = createStackNavigator({
 const TaskStack = createStackNavigator({
   TaskList: {
     screen: TaskList,
-    navigationOptions: MenuButton
+    defaultNavigationOptions: MenuButton
   },
   TaskDetails: {
     screen: TaskDetails
@@ -137,7 +137,7 @@ const TaskStack = createStackNavigator({
 const MyStack = createStackNavigator({
   MyList: {
     screen: MyList,
-    navigationOptions: MenuButton
+    defaultNavigationOptions: MenuButton
   },
   MyEntry: {
     screen: BookDetails
@@ -148,17 +148,17 @@ const MyStack = createStackNavigator({
 }, Header);
 
 // Set tabBar invisible on other than main screens
-BookStack.navigationOptions = ({navigation}) => {
+BookStack.defaultNavigationOptions = ({navigation}) => {
   let tabBarVisible = navigation.state.index < 1;
   return { tabBarVisible };
 };
 
-TaskStack.navigationOptions = ({navigation}) => {
+TaskStack.defaultNavigationOptions = ({navigation}) => {
   let tabBarVisible = navigation.state.index < 1;
   return { tabBarVisible };
 };
 
-MyStack.navigationOptions = ({navigation}) => {
+MyStack.defaultNavigationOptions = ({navigation}) => {
   let tabBarVisible = navigation.state.index < 1;
   return { tabBarVisible };
 };
@@ -167,7 +167,7 @@ MyStack.navigationOptions = ({navigation}) => {
 const Navigation = createBottomTabNavigator({
   Home: {
     screen: BookStack,
-    navigationOptions: {
+    defaultNavigationOptions: {
       tabBarLabel: 'Kirjat',
       tabBarIcon: ({tintColor}) => (
         <Icon
@@ -181,7 +181,7 @@ const Navigation = createBottomTabNavigator({
   },
   Tasks: {
     screen: TaskStack,
-    navigationOptions: {
+    defaultNavigationOptions: {
       tabBarLabel: 'Tehtävät',
       tabBarIcon: ({tintColor}) => (
         <Icon
@@ -195,7 +195,7 @@ const Navigation = createBottomTabNavigator({
   },
   My: {
     screen: MyStack,
-    navigationOptions: {
+    defaultNavigationOptions: {
       tabBarLabel: 'Omat kirjat',
       tabBarIcon: ({tintColor}) => (
         <Icon
