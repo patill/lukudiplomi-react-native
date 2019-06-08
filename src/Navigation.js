@@ -6,7 +6,8 @@
 
 import {
   createBottomTabNavigator,
-  createStackNavigator
+  createStackNavigator,
+  createAppContainer
 } from 'react-navigation';
 import { TouchableOpacity, View, Text, Modal } from 'react-native';
 import React from 'react';
@@ -214,4 +215,5 @@ const Navigation = createBottomTabNavigator({
   }
 });
 
-export default Navigation;
+const appContainer = createAppContainer(Navigation);
+export default appContainer;
