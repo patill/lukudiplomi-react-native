@@ -1,38 +1,29 @@
 {
   "name": "lukudiplomi",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": true,
-  "devDependencies": {
-    "babel-plugin-transform-remove-console": "^6.9.4",
-    "babel-preset-react-native-stage-0": "^1.0.1",
-    "eslint": "^5.5.0",
-    "eslint-config-standard": "^11.0.0",
-    "eslint-plugin-babel": "^5.2.1",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-node": "^6.0.1",
-    "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-react": "^7.11.1",
-    "eslint-plugin-react-native": "^3.3.0",
-    "eslint-plugin-standard": "^3.1.0",
-    "jest": "^23.6.0",
-    "jest-react-native": "^18.0.0",
-    "react-test-renderer": "16.3.1"
-  },
   "scripts": {
-    "start": "react-native start",
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
+    "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest"
+  },
+  "dependencies": {
+    "react": "16.8.3",
+    "react-native": "0.59.9",
+    "react-native-elements": "^1.1.0",
+    "react-native-splash-screen": "^3.2.0",
+    "react-native-vector-icons": "^6.5.0",
+    "react-navigation": "^3.11.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.4.5",
+    "@babel/runtime": "7.4.5",
+    "babel-jest": "24.8.0",
+    "babel-preset-react-native": "^4.0.1",
+    "jest": "24.8.0",
+    "metro-react-native-babel-preset": "0.54.1",
+    "react-test-renderer": "16.8.3"
   },
   "jest": {
     "preset": "react-native"
-  },
-  "dependencies": {
-    "react": "16.3.1",
-    "react-native": "~0.55.2",
-    "react-native-elements": "^0.19.1",
-    "react-native-splash-screen": "^3.1.1",
-    "react-native-vector-icons": "^5.0.0",
-    "react-navigation": "^2.12.1"
   }
 }
