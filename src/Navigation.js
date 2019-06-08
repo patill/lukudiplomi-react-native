@@ -102,7 +102,7 @@ const Header = {
 const BookStack = createStackNavigator({
   Home: {
     screen: BookList,
-    defaultNavigationOptions: MenuButton
+    navigationOptions: MenuButton
   },
   BookDetails: {
     screen: BookDetails
@@ -137,7 +137,7 @@ const TaskStack = createStackNavigator({
 const MyStack = createStackNavigator({
   MyList: {
     screen: MyList,
-    defaultNavigationOptions: MenuButton
+    navigationOptions: MenuButton
   },
   MyEntry: {
     screen: BookDetails
@@ -167,7 +167,7 @@ MyStack.defaultNavigationOptions = ({navigation}) => {
 const Navigation = createBottomTabNavigator({
   Home: {
     screen: BookStack,
-    defaultNavigationOptions: {
+    navigationOptions: {
       tabBarLabel: 'Kirjat',
       tabBarIcon: ({tintColor}) => (
         <Icon
@@ -181,7 +181,7 @@ const Navigation = createBottomTabNavigator({
   },
   Tasks: {
     screen: TaskStack,
-    defaultNavigationOptions: {
+    navigationOptions: {
       tabBarLabel: 'Tehtävät',
       tabBarIcon: ({tintColor}) => (
         <Icon
@@ -195,7 +195,7 @@ const Navigation = createBottomTabNavigator({
   },
   My: {
     screen: MyStack,
-    defaultNavigationOptions: {
+    navigationOptions: {
       tabBarLabel: 'Omat kirjat',
       tabBarIcon: ({tintColor}) => (
         <Icon
