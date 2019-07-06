@@ -30,16 +30,20 @@ import ConfigDatasource from './src/Datasources/ConfigDatasource';
 class App extends Component {
   constructor (props) {
     super(props);
+
+    // TODO: Remove parser when you have JSON datafiles in place
     let downloader = new Downloader(new Parser({}));
-    let uri = 'https://www.example.com/lukudiplomi-config.txt';
-    this.config = new ConfigDatasource(uri, downloader);
+    this.config = new ConfigDatasource(downloader);
   }
 
-  componentDidMount () {
+  /**
+   * @inheritDoc
+   *
+   * This is RN lifecycle method. It checks if grade is already selected; if it
+   * is not, then redirect to grade selection screen.
+   */
+  componentDidMount = () => {
     SplashScreen.hide();
-
-    // First, check if there's current grade set; if not, navigate to the grade
-    // selection screen to set the grade.
     let grade = this.config.getCurrentGrade();
     grade.then((value) => {
       if (!value) {
@@ -48,10 +52,12 @@ class App extends Component {
         );
         return null;
       }
-    }).catch((error) => {});
+    }).catch((error) => {
+        console.error("[App::componentDidMount]: " + error);
+    });
   }
 
-  render () {
+  render = () => {
     return (
       <Navigation
         ref={(ref) => { this.navigator = ref; }}
