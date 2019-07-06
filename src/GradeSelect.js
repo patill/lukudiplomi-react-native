@@ -40,7 +40,9 @@ export default class GradeSelect extends Component {
         grade: values[0] ? values[0] : values[1][0],
         grades: values[1]
       });
-    }).catch((error) => {});
+    }).catch((error) => {
+        console.log(error);
+    });
   }
 
   render () {
