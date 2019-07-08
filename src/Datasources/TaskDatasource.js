@@ -4,7 +4,7 @@
  * @license MIT (see LICENSE)
  */
 
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage } from "react-native";
 
 /**
  * A data source for tasks.
@@ -13,9 +13,8 @@ import { AsyncStorage } from 'react-native';
  * a task.
  */
 class TaskDatasource {
-
   // Depends on configuration class (for URIs), books datasource and downloader
-  constructor (config, books, downloader) {
+  constructor(config, books, downloader) {
     this.config = config;
     this.books = books;
     this.downloader = downloader;
@@ -32,7 +31,7 @@ class TaskDatasource {
       grade = await this.config.getCurrentGrade();
       config = await this.config.getConfig();
 
-      gradeData = config.find((entry) => {
+      gradeData = config.find(entry => {
         return entry.title === grade;
       });
 
@@ -52,7 +51,7 @@ class TaskDatasource {
 
     // Set the done flag to true for all tasks that are done; the done variable
     // is an array that contains the number of task which is done.
-    tasks = tasks.map((task) => {
+    tasks = tasks.map(task => {
       if (done.includes(task.num)) {
         task.isDone = true;
       }
@@ -63,7 +62,7 @@ class TaskDatasource {
       grade: grade,
       data: tasks || []
     };
-  }
+  };
 
   /**
    * Save books selected for task
@@ -72,10 +71,10 @@ class TaskDatasource {
    * @param {array} selectedBooks - An array of books selected for task
    */
   addBooks = async (taskNumber, selectedBooks) => {
-    let grade,  // Current grade names
-      done,     // Done tasks
-      doneKey,  // Key for storing done tasks
-      taskKey;  // Storage key for books
+    let grade, // Current grade names
+      done, // Done tasks
+      doneKey, // Key for storing done tasks
+      taskKey; // Storage key for books
     try {
       grade = await this.config.getCurrentGrade();
 
@@ -99,13 +98,13 @@ class TaskDatasource {
     }
 
     return done;
-  }
+  };
 
-  removeBooks = async (taskNumber) => {
-    let grade,  // Current grade names
-      done,     // Done tasks
-      doneKey,  // Key for storing done tasks
-      taskKey;  // Storage key for books
+  removeBooks = async taskNumber => {
+    let grade, // Current grade names
+      done, // Done tasks
+      doneKey, // Key for storing done tasks
+      taskKey; // Storage key for books
     try {
       grade = await this.config.getCurrentGrade();
 
@@ -126,12 +125,10 @@ class TaskDatasource {
     } catch (error) {}
 
     return done;
-  }
+  };
 
   getDone = async () => {
-    let grade,
-      done,
-      doneKey;
+    let grade, done, doneKey;
 
     try {
       grade = await this.config.getCurrentGrade();
@@ -143,31 +140,28 @@ class TaskDatasource {
     }
 
     return done;
-  }
+  };
 
   getDoneFormatted = async () => {
-    let tasksFormatted = '';
-    let tasks,
-      done,
-      tasksData,
-      formatted;
+    let tasksFormatted = "";
+    let tasks, done, tasksData, formatted;
     try {
       tasks = await this.getTasks();
       done = tasks.data.filter(task => task.isDone);
 
-      await Promise.all(
-        done.map(task => this.getBooks(task.num))
-      )
-        .then((data) => {
+      await Promise.all(done.map(task => this.getBooks(task.num)))
+        .then(data => {
           // The `data` parameter is now an array of task objects, where keys
           // are grade, taskNumber, and data.
-          tasksData = data.map((task) => {
-            let taskObject = tasks.data.find((item) => item.num === task.taskNumber);
-            task.text = taskObject.task || '';
+          tasksData = data.map(task => {
+            let taskObject = tasks.data.find(
+              item => item.num === task.taskNumber
+            );
+            task.text = taskObject.task || "";
             return task;
           });
         })
-        .catch((error) => {});
+        .catch(error => {});
     } catch (e) {}
 
     let date = new Date();
@@ -175,17 +169,20 @@ class TaskDatasource {
     // TODO: Show date and month with leading zeros
     // NOTE: That, getMonth() returns one less than current real month, since it
     // begins numbering from zero, i.e. 0 = January.
-    let today = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
+    let today = `${date.getDate()}.${date.getMonth() +
+      1}.${date.getFullYear()}`;
 
-    tasksData.map((item) => {
+    tasksData.map(item => {
       tasksFormatted += `${item.taskNumber}. ${item.text}\n`;
-      tasksFormatted += item.data.map((book) => {
-        return `- ${book.title}; ${book.author}`;
-      }).join('\n');
-      tasksFormatted += '\n';
+      tasksFormatted += item.data
+        .map(book => {
+          return `- ${book.title}; ${book.author}`;
+        })
+        .join("\n");
+      tasksFormatted += "\n";
     });
 
-    let grade = '';
+    let grade = "";
     try {
       grade = await this.config.getCurrentGrade();
     } catch (error) {
@@ -193,15 +190,15 @@ class TaskDatasource {
     }
 
     formatted = `Pirkanmaan lukudiplomi: Tehtävälista ja kirjavalinnat (tallennettu ${today})\n\nVuosiluokka: ${grade}\n\nTehtävät:\n\n${tasksFormatted}\n`;
-    return formatted || '';
-  }
+    return formatted || "";
+  };
 
   /**
    * Get books by taskNumber
    *
    * @param {number} taskNumber - A task identifying number
    */
-  getBooks = async (taskNumber) => {
+  getBooks = async taskNumber => {
     let grade, // Current grade name
       key, // Key under which the books are stored
       books, // List of books for current grade
@@ -218,12 +215,16 @@ class TaskDatasource {
       booksForTask = await this.books.getBooks();
 
       // Filter out those that are not associated with the current taskNumber
-      booksForTask = booksForTask.filter((bookForTask) => {
-        return books.find((book) => {
-          return bookForTask.title === book.title && bookForTask.author === book.author
-        }) ? true : false;
+      booksForTask = booksForTask.filter(bookForTask => {
+        return books.find(book => {
+          return (
+            bookForTask.title === book.title &&
+            bookForTask.author === book.author
+          );
+        })
+          ? true
+          : false;
       });
-      
     } catch (error) {
       console.log(error);
     }
@@ -233,7 +234,7 @@ class TaskDatasource {
       taskNumber: taskNumber,
       data: booksForTask || []
     };
-  }
+  };
 }
 
 export default TaskDatasource;
