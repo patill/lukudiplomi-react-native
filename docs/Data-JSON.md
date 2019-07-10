@@ -15,7 +15,7 @@ Asetustiedosto sisältää sovelluksessa valittavana olevien luokka-asteiden tie
 }
 ```
 
-**Huomio!** Päivämäärä on _vuosi-kuukausi-päiväys_-muodossa, jossa vuosi on 4-numeroinen, kuukausi ja päiväys aina kaksinumeroinen, eli jos kuukauden tai päivän numero on pienempi kuin 10, tulee siihen etunolla. Esimerkiksi 2018-08-01 tarkoittaa elokuun ensimmäistä päivää vuonna 2018.
+**Huomio!** Päivämäärä tulee olla aina `vuosi-kuukausi-päiväys`-muodossa, jossa _vuosi_ on 4-numeroinen, _kuukausi_ ja _päiväys_ ovat aina kaksinumeroisessa muodossa, eli jos kuukauden tai päivän numero on pienempi kuin 10, tulee siihen etunolla. Esimerkiksi `2018-08-01` tarkoittaa elokuun ensimmäistä päivää vuonna 2018.
 
 ## Kirjat
 
@@ -23,6 +23,7 @@ Asetustiedosto sisältää sovelluksessa valittavana olevien luokka-asteiden tie
 
 ```json
 {
+	"id": "",
 	"author": "Linna, Väinö",
 	"title": "Tuntematon sotilas",
 	"coverImageUrl": "https://www.example.fi/tuntematon-sotilas.jpg",
@@ -32,16 +33,23 @@ Asetustiedosto sisältää sovelluksessa valittavana olevien luokka-asteiden tie
 		"tag 2",
 		"etc."
 	],
-	"description": "Description text goes here",
+	"description": "Kuvausteksti tulee tähän.",
 	"availabilityUrl": "https://www.example.fi/saatavuus-tiedot/tuntematon-sotilas",
-	"series": [
+	"alternatives": [
 		{
 			"title": "Sarjan muun osan otsaketeksti, jos sellainen on.",
-			"seriesUrl": "https://www.example.fi/sarjan-muun-osan-saatvauus-tiedot"
+			"availabilityUrl": "https://www.example.fi/sarjan-muun-osan-saatvauus-tiedot"
 		}
-	]
+	],
+	"helpText": "Kirjoihin voidaan antaa lisäohjeita.",
+	"additionalInformation": "Lisätietoja.",
+	"updated": "2018-08-20"
 }
 ```
+
+**TODO**
+
+- Mikä ID-tunnisteeksi?
 
 ## Tehtävät
 
