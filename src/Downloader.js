@@ -1,6 +1,6 @@
 /**
  * Data downloader utility.
- * 
+ *
  * @author Miika Koskela <koskela.miika.s@outlook.com>
  * @copyright Tampereen Kaupunginkirjasto, 2018-
  * @license MIT (see LICENSE)
@@ -17,9 +17,9 @@ export default class Downloader {
 
   /**
    * Get the data from the server
-   * 
+   *
    * TODO: Add a way to specify also the content type; now it's hardcoded
-   * 
+   *
    * @param {string} url
    */
   getData = async (url) => {
@@ -33,11 +33,11 @@ export default class Downloader {
 
       let data = await response.text();
 
-      books = this.parser.parse(data);
+      books = this.parser.parse(data); // returns an array of objects
     } catch (error) {
-      console.log(error);
+      console.log("[Downloader::getData]: " + error);
     }
 
-    return books;
+    return JSON.stringify(books);
   }
 }
