@@ -16,7 +16,7 @@ import Parser from '../Parser';
  *
  * On this screen, user can select his / her preferred grade.
  */
-export default class GradeSelect extends Component {
+class GradeSelect extends Component {
 
   static navigationOptions = {
     title: 'Valitse luokka-aste'
@@ -89,3 +89,5 @@ export default class GradeSelect extends Component {
     );
   }
 }
+
+export default GradeSelect;
