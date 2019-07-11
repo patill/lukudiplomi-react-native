@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 import { NavigationActions } from 'react-navigation';
 import Styles from './src/Styles';
 
-import Navigation from './src/Navigation';
+import Navigation from './src/Components/Navigation';
 import Downloader from './src/Downloader';
 
 // TODO: Parser can be left out when the server contains only JSON files.

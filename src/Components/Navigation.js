@@ -16,14 +16,14 @@ import { Icon } from 'react-native-elements';
 // Custom components or screens
 import BookDetails from './BookDetails';
 import BookList from './BookList';
-import MyList from './MyList';
+import MyList from '../MyList';
 import TaskDetails from './TaskDetails';
 import TaskList from './TaskList';
 import GradeSelect from './GradeSelect';
 import TaskBookSelect from './TaskBookSelect';
 import Help from './Help';
 
-import Styles, { Colors } from './Styles';
+import Styles, { Colors } from '../Styles';
 
 // General navigation options, which are passed to all three main tabs or
 // screens. These are then concatenated with the screen-specific options, like

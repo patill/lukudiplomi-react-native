@@ -6,10 +6,10 @@
 
 import React, { Component } from 'react';
 import { TouchableOpacity, View, Text, Picker, AsyncStorage } from 'react-native';
-import Styles from './Styles';
-import ConfigDatasource from './Datasources/ConfigDatasource';
-import Downloader from './Downloader';
-import Parser from './Parser';
+import Styles from '../Styles';
+import ConfigDatasource from '../Datasources/ConfigDatasource';
+import Downloader from '../Downloader';
+import Parser from '../Parser';
 
 /**
  * Grade selection screen.
