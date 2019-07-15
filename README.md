@@ -56,6 +56,8 @@ Edellisen kohdalla katso myös ohjeet täältä:
 
 https://reactnavigation.org/docs/en/getting-started.html
 
+Ennen kuin jatkat tästä eteenpäin, muista myös muuttaa konfiguraatio-tiedoston osoite `ConfigDatasource.js`-tiedostossa.
+
 #### Android
 
 Kun asennus on valmis, käynnistä Android-emulaattori. Voit tehdä tämän joko komentoriviltä tai sitten Android Studion kautta. Kun Android-emulaattori on käynnissä, luo ja asenna sovelluspaketti (APK) seuraavasti:
