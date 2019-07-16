@@ -31,7 +31,7 @@ class App extends Component {
   constructor (props) {
     super(props);
     let downloader = new Downloader(new Parser({}));
-    let uri = 'https://www.example.com/lukudiplomi-config.txt';
+    let uri = 'https://raw.githubusercontent.com/patill/lukudiplomi-pori-datasources/master/lukudiplomi-config.txt';
     this.config = new ConfigDatasource(uri, downloader);
   }
 
