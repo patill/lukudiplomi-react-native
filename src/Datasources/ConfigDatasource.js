@@ -20,7 +20,7 @@ class ConfigDatasource {
 
   // This class depends on downloader and URI (which is hardcoded currently)
   constructor (downloader) {
-    this.uri = 'https://www.example.com/lukudiplomi-config.txt';
+    this.uri = 'https://raw.githubusercontent.com/patill/lukudiplomi-pori-datasources/master/lukudiplomi-config.txt';
     this.downloader = downloader;
   }
 
