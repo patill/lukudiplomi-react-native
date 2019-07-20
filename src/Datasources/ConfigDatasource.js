@@ -7,7 +7,7 @@
  */
 
 import { AsyncStorage } from "react-native";
-import configUri from "./../../config";
+import config from "./../../config";
 
 /**
  * Configuration data source.
@@ -20,7 +20,7 @@ import configUri from "./../../config";
 class ConfigDatasource {
   // This class depends on downloader and URI
   constructor(downloader) {
-    this.uri = configUri;
+    this.uri = config.configUri;
     this.downloader = downloader;
   }
 
@@ -66,24 +66,26 @@ class ConfigDatasource {
    *
    * Try first local AsyncStorage, if not available from there, try downloading.
    *
-   * @returns Promise, which resolves to JSON object
+   * @returns Promise, which resolves to JSON object or null in case of failure
    **/
   getConfig = async () => {
     let data = [];
     try {
-      data = await AsyncStorage.getItem("lukudiplomi/asetukset"); // returns string
+      // returns string (or null in case of no such key?)
+      data = await AsyncStorage.getItem("lukudiplomi/asetukset");
       if (!data) {
-        data = await this.downloader.getData(this.uri); // returns string
+        // returns string; or null in case of error
+        data = await this.downloader.getData(this.uri);
         if (data) {
           await AsyncStorage.setItem("lukudiplomi/asetukset", data);
         }
       }
+
+      return JSON.parse(data);
     } catch (error) {
       console.log("[ConfigDatasource::getConfig]: " + error);
     }
-
-    data = JSON.parse(data);
-    return data;
+    return null;
   };
 
   /**

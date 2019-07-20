@@ -57,26 +57,28 @@ class BookDatasource {
       });
 
       // Try to read book data for current gradeName
+      // This call returns string
       data = await AsyncStorage.getItem(`lukudiplomi/${gradeName}`);
 
-      // If there's no book data available, read it from the server; the server
-      // URI is at gradeData.books.
+      // If there's no book data available, read it from the server;
+      // the server URI is in the gradeData.books property.
+      // 
+      // Data is now either null or string
       if (!data || data.length < 1) {
-        data = JSON.stringify(await this.downloader.getData(gradeData.books));
+        // This returns null or string
+        data = await this.downloader.getData(gradeData.books);
         await AsyncStorage.setItem(`lukudiplomi/${gradeName}`, data);
       }
 
       // The data is currently in string format, so parse it into JSON object
       data = JSON.parse(data);
+
+      return this.sortByAuthor(data);
     } catch (error) {
-      console.log(error);
+      console.log("[BookDatasource::getBooks]" + error);
     }
 
-    // Obvious, but sort the data by author
-    data = this.sortByAuthor(data);
-
-    // Return data, or if it evaluates as false, return empty array
-    return data || [];
+    return null;
   };
 
   // Toggle bookmarks

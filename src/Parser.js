@@ -17,6 +17,14 @@ export default class Parser {
     this.keymap = aliases;
   }
 
+  /**
+   * Parses the data given in string format
+   * 
+   * Returns always an array.
+   * 
+   * @param string data
+   * @returns array
+   */
   parse = (data) => {
     let result = [];
 

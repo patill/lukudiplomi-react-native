@@ -21,6 +21,7 @@ export default class Downloader {
    * TODO: Add a way to specify also the content type; now it's hardcoded
    *
    * @param {string} url
+   * @returns string|null
    */
   getData = async (url) => {
     let books = [];
@@ -33,11 +34,15 @@ export default class Downloader {
 
       let data = await response.text();
 
-      books = this.parser.parse(data); // returns an array of objects
+      books = this.parser.parse(data);
+      
+      // returns an array of objects
+      return JSON.stringify(books);
     } catch (error) {
-      console.log("[Downloader::getData]: " + error);
+      console.log(`[Downloader::getData(${url})]: ` + error);
     }
 
-    return JSON.stringify(books);
+    // or null, in case of error
+    return null;
   }
 }
