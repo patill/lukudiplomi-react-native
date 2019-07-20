@@ -40,19 +40,14 @@ $ ./node_modules/.bin/react-native eject
 Suorita myös seuraavat komennot:
 
 ```bash
-$ ./node_modules/.bin/react-native link react-native-elements
-$ ./node_modules/.bin/react-native link react-native-vector-icons
-$ ./node_modules/.bin/react-native link react-native-gesture-handler
-$ ./node_modules/.bin/react-native link react-native-splash-screen
+./node_modules/.bin/react-native link react-native-elements
+./node_modules/.bin/react-native link react-native-vector-icons
+./node_modules/.bin/react-native link react-native-gesture-handler
+./node_modules/.bin/react-native link react-native-splash-screen
+./node_modules/.bin/react-native link react-navigation
 ```
 
-ja
-
-```bash
-$ ./node_modules/.bin/react-native link react-navigation
-```
-
-Edellisen kohdalla katso myös ohjeet täältä:
+Viimeisen kohdalla katso myös ohjeet täältä:
 
 https://reactnavigation.org/docs/en/getting-started.html
 
