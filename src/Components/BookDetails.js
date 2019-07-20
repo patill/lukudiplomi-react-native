@@ -30,8 +30,8 @@ import Styles, { Colors } from "../Styles";
 import BookListItem from "./BookListItem";
 import Downloader from "../Downloader";
 import Parser from "../Parser";
-import ConfigDatasource from "./Datasources/ConfigDatasource";
-import BookDatasource from "./Datasources/BookDatasource";
+import ConfigDatasource from "../Datasources/ConfigDatasource";
+import BookDatasource from "../Datasources/BookDatasource";
 
 /**
  * Book details view.
