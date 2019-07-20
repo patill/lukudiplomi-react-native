@@ -19,19 +19,17 @@ import React, { Component } from "react";
 import {
   View,
   ScrollView,
-  FlatList,
   TouchableOpacity,
   Text,
-  Button,
   Linking
 } from "react-native";
 import PropTypes from "prop-types";
 
 // My imports
-import Styles, { Colors } from "./Styles";
+import Styles, { Colors } from "../Styles";
 import BookListItem from "./BookListItem";
-import Downloader from "./Downloader";
-import Parser from "./Parser";
+import Downloader from "../Downloader";
+import Parser from "../Parser";
 import ConfigDatasource from "./Datasources/ConfigDatasource";
 import BookDatasource from "./Datasources/BookDatasource";
 

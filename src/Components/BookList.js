@@ -15,15 +15,14 @@ import {
   Picker
 } from "react-native";
 import PropTypes from "prop-types";
-import { Icon } from "react-native-elements";
 
 // My imports
 import BookListItem from "./BookListItem";
-import Downloader from "./Downloader";
-import Parser from "./Parser";
-import Styles, { Colors } from "./Styles";
-import BookDatasource from "./Datasources/BookDatasource";
-import ConfigDatasource from "./Datasources/ConfigDatasource";
+import Downloader from "../Downloader";
+import Parser from "../Parser";
+import Styles, { Colors } from "../Styles";
+import BookDatasource from "../Datasources/BookDatasource";
+import ConfigDatasource from "../Datasources/ConfigDatasource";
 
 export default class BookList extends Component {
   myBooksFilter = "omat kirjat";

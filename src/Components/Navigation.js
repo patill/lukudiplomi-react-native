@@ -16,7 +16,7 @@ import { Icon } from "react-native-elements";
 // Custom components or screens
 import BookDetails from "./BookDetails";
 import BookList from "./BookList";
-import MyList from "../MyList";
+import MyList from "./MyList";
 import TaskDetails from "./TaskDetails";
 import TaskList from "./TaskList";
 import GradeSelect from "./GradeSelect";
