@@ -6,3 +6,4 @@ ios/
 .project
 *.keystore
 *.zip
+config.js

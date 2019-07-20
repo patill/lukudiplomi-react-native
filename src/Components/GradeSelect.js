@@ -6,17 +6,17 @@
 
 import React, { Component } from 'react';
 import { TouchableOpacity, View, Text, Picker, AsyncStorage } from 'react-native';
-import Styles from './Styles';
-import ConfigDatasource from './Datasources/ConfigDatasource';
-import Downloader from './Downloader';
-import Parser from './Parser';
+import Styles from '../Styles';
+import ConfigDatasource from '../Datasources/ConfigDatasource';
+import Downloader from '../Downloader';
+import Parser from '../Parser';
 
 /**
  * Grade selection screen.
  *
  * On this screen, user can select his / her preferred grade.
  */
-export default class GradeSelect extends Component {
+class GradeSelect extends Component {
 
   static navigationOptions = {
     title: 'Valitse luokka-aste'
@@ -40,7 +40,9 @@ export default class GradeSelect extends Component {
         grade: values[0] ? values[0] : values[1][0],
         grades: values[1]
       });
-    }).catch((error) => {});
+    }).catch((error) => {
+        console.log(error);
+    });
   }
 
   render () {
@@ -87,3 +89,5 @@ export default class GradeSelect extends Component {
     );
   }
 }
+
+export default GradeSelect;

@@ -4,27 +4,26 @@
  * @license MIT (see LICENSE)
  */
 
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
-import { SectionList, View, Text, TouchableOpacity, Modal } from 'react-native';
-import { Icon } from 'react-native-elements';
-import { Share } from 'react-native';
+import PropTypes from "prop-types";
+import React, { Component } from "react";
+import { SectionList, View, Text, TouchableOpacity, Modal } from "react-native";
+import { Icon } from "react-native-elements";
+import { Share } from "react-native";
 
-import Downloader from './Downloader';
-import Parser from './Parser';
-import TaskListItem from './TaskListItem';
-import TaskDatasource from './Datasources/TaskDatasource';
-import ConfigDatasource from './Datasources/ConfigDatasource';
-import Styles, { Colors } from './Styles';
-import BookDatasource from './Datasources/BookDatasource';
+import Downloader from "../Downloader";
+import Parser from "../Parser";
+import TaskListItem from "./TaskListItem";
+import TaskDatasource from "../Datasources/TaskDatasource";
+import ConfigDatasource from "../Datasources/ConfigDatasource";
+import Styles, { Colors } from "../Styles";
+import BookDatasource from "../Datasources/BookDatasource";
 
 export default class TaskList extends Component {
-
   static navigationOptions = {
-    title: 'Tehtävät'
+    title: "Tehtävät"
   };
 
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     // TODO: Update this explanation or move it to wiki
@@ -33,7 +32,7 @@ export default class TaskList extends Component {
     // screen. But when he / she navigates to task list, it's not updated since
     // nothing has changed on that screen. This focus event listener re-sets the
     // state so it's updated and re-rendered and thus also task list is updated.
-    this.props.navigation.addListener('didFocus', () => {
+    this.props.navigation.addListener("didFocus", () => {
       this.updateTasks();
     });
 
@@ -58,8 +57,9 @@ export default class TaskList extends Component {
    * to be re-rendered.
    */
   updateTasks = () => {
-    this.tasks.getTasks()
-      .then((tasks) => {
+    this.tasks
+      .getTasks()
+      .then(tasks => {
         // Check if grade has changed before updating the state
         // TODO: This stops updating when focusing the page
         // NOTE: If statement was used in conjunction with componentDidUpdate
@@ -70,12 +70,10 @@ export default class TaskList extends Component {
         });
         //}
       })
-      .catch((error) => {
+      .catch(error => {});
+  };
 
-      });
-  }
-
-  componentDidMount () {
+  componentDidMount() {
     this.updateTasks();
   }
 
@@ -83,25 +81,29 @@ export default class TaskList extends Component {
    * onShare method for share button
    */
   onShare = () => {
-    this.tasks.getDoneFormatted()
-      .then((data) => {
-        Share.share({
-          title: 'Lukudiplomin tehtävälista',
-          message: data
-        }, {
-          dialogTitle: 'Jaa tehtävälista',
-          excludedActivityTypes: []
-        })
-        .then((data) => {
-          this.setState((state) => {
-            let visible = !state.visible;
-            return { visible };
-          });
-        })
-        .catch((error) => {});
+    this.tasks
+      .getDoneFormatted()
+      .then(data => {
+        Share.share(
+          {
+            title: "Lukudiplomin tehtävälista",
+            message: data
+          },
+          {
+            dialogTitle: "Jaa tehtävälista",
+            excludedActivityTypes: []
+          }
+        )
+          .then(data => {
+            this.setState(state => {
+              let visible = !state.visible;
+              return { visible };
+            });
+          })
+          .catch(error => {});
       })
-      .catch((error) => {});
-  }
+      .catch(error => {});
+  };
 
   /**
    * Format the datset to be suitable for SectionList.
@@ -115,7 +117,7 @@ export default class TaskList extends Component {
    * ]
    * ```
    */
-  getSections () {
+  getSections() {
     let sections = [];
     let tasks = [...this.state.tasks];
 
@@ -123,7 +125,7 @@ export default class TaskList extends Component {
     let types = [...new Set(tasks.map(task => task.type))];
 
     //
-    types.map((type) => {
+    types.map(type => {
       sections.push({
         title: type,
         data: this.state.tasks.filter(entry => entry.type === type)
@@ -133,29 +135,35 @@ export default class TaskList extends Component {
     return sections;
   }
 
-  render () {
+  render() {
     return (
       <View style={Styles.mainContainer}>
         <SectionList
           keyExtractor={(item, index) => `${item.type}-${item.num}`}
-          renderItem={({item, index, section}) => {return (
-            <TaskListItem
-              item={item}
-              renderCheck={!!item.isDone}
-              navigation={this.props.navigation}
-            />
-          )}}
-          renderSectionHeader={({section: {title}}) => (
+          renderItem={({ item, index, section }) => {
+            return (
+              <TaskListItem
+                item={item}
+                renderCheck={!!item.isDone}
+                navigation={this.props.navigation}
+              />
+            );
+          }}
+          renderSectionHeader={({ section: { title } }) => (
             <View>
-              <Text style={Styles.taskRowHeading}>{title === 'group' ? 'Ryhmätehtävät' : 'Henkilökohtaiset tehtävät'}</Text>
+              <Text style={Styles.taskRowHeading}>
+                {title === "group"
+                  ? "Ryhmätehtävät"
+                  : "Henkilökohtaiset tehtävät"}
+              </Text>
             </View>
           )}
           sections={this.getSections()}
         />
         <View style={Styles.fabModalContent}>
-        <TouchableOpacity
-          onPress={this.onShare}
-          style={Styles.shareFabButton}
+          <TouchableOpacity
+            onPress={this.onShare}
+            style={Styles.shareFabButton}
           >
             <Icon
               type="material-community"

@@ -5,59 +5,64 @@
  */
 
 // Third-party imports
-import React, { Component } from 'react';
-import { FlatList, Picker, View, Text, Button, Modal, TouchableOpacity } from 'react-native';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import {
+  FlatList,
+  Picker,
+  View,
+  Text,
+  Button,
+  Modal,
+  TouchableOpacity
+} from "react-native";
+import PropTypes from "prop-types";
 
 // Own imports
-import BookListItemSelect from './BookListItemSelect';
-import Downloader from './Downloader';
-import Parser from './Parser';
-import Styles, { Colors } from './Styles';
-import BookDatasource from './Datasources/BookDatasource';
-import ConfigDatasource from './Datasources/ConfigDatasource';
-import TaskDatasource from './Datasources/TaskDatasource';
+import BookListItemSelect from "./BookListItemSelect";
+import Downloader from "../Downloader";
+import Parser from "../Parser";
+import Styles, { Colors } from "../Styles";
+import BookDatasource from "../Datasources/BookDatasource";
+import ConfigDatasource from "../Datasources/ConfigDatasource";
+import TaskDatasource from "../Datasources/TaskDatasource";
 
 export default class TaskBookSelect extends Component {
-
   /**
    * The `headerRight` section. It contains currently Save-button (to Save all
    * the books selected for the current task) and the title shown in the top bar
    * of the app.
    */
-  static navigationOptions = ({navigation}) => {
+  static navigationOptions = ({ navigation }) => {
     return {
       headerRight: (
-        <View
-          style={Styles.HeaderRightButtonContainer}
-        >
+        <View style={Styles.HeaderRightButtonContainer}>
           <TouchableOpacity
             style={Styles.headerButton}
             onPress={() => {
-              navigation.getParam('onSave')();
+              navigation.getParam("onSave")();
             }}
           >
             <Text style={Styles.buttonText}>TALLENNA</Text>
           </TouchableOpacity>
         </View>
       ),
-      title: 'Valitse kirjat'
-    }
+      title: "Valitse kirjat"
+    };
   };
 
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     let downloader = new Downloader(new Parser());
 
-    this.defaultFilter = 'kaikki teokset';
-    this.myBooksFilter = 'omat kirjat';
+    this.defaultFilter = "kaikki teokset";
+    this.myBooksFilter = "omat kirjat";
 
     this.config = new ConfigDatasource(downloader);
     this.books = new BookDatasource(this.config, downloader);
     this.tasks = new TaskDatasource(this.config, this.books, downloader);
 
-    this.props.navigation.setParams({onSave: this.onSave});
+    this.props.navigation.setParams({ onSave: this.onSave });
 
     // Initial state
     this.state = {
@@ -74,44 +79,46 @@ export default class TaskBookSelect extends Component {
    *
    * @param {array} books - An array of book objects
    */
-  getTags = (books) => {
+  getTags = books => {
     let tags = [].concat(...books.map(book => book.tags));
     return new Set(tags.sort());
-  }
+  };
 
   /**
    * onPress method for Save-button on the header
    */
   onSave = () => {
-
     let selected = this.state.selected;
     let books = this.state.books;
 
     // About the double-negation, see poject wiki under "Javascript"
-    let selectedBooks = books.filter((book) => {
+    let selectedBooks = books.filter(book => {
       return !!selected.get(`${book.title}:${book.author}`);
     });
 
-    let taskNumber = this.props.navigation.getParam('taskNumber');
-    this.tasks.addBooks(taskNumber, selectedBooks)
+    let taskNumber = this.props.navigation.getParam("taskNumber");
+    this.tasks
+      .addBooks(taskNumber, selectedBooks)
       .then(() => {
-        this.props.navigation.navigate('TaskDetails', {
+        this.props.navigation.navigate("TaskDetails", {
           shouldUpdate: true
         });
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
       });
-  }
+  };
 
-  componentDidMount () {
-    this.books.getBooks()
-      .then((books) => {
+  componentDidMount() {
+    this.books
+      .getBooks()
+      .then(books => {
         this.setState({
           books: books,
           tags: [...this.getTags(books)]
         });
-      }).catch((error) => {
+      })
+      .catch(error => {
         console.log(error);
       });
   }
@@ -128,58 +135,58 @@ export default class TaskBookSelect extends Component {
    *
    * @see https://reactjs.org/docs/react-component.html#componentdidupdate
    */
-  componentDidUpdate () {
-    let shouldUpdate = this.props.navigation.getParam('shouldUpdate');
+  componentDidUpdate() {
+    let shouldUpdate = this.props.navigation.getParam("shouldUpdate");
     if (shouldUpdate === true) {
-      this.props.navigation.setParams({shouldUpdate: false});
-      this.books.getBooks()
-        .then((books) => {
+      this.props.navigation.setParams({ shouldUpdate: false });
+      this.books
+        .getBooks()
+        .then(books => {
           this.setState({
             books: books,
             tags: [...this.getTags(books)]
           });
-
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     }
   }
 
-  onPress = (item) => {
-    this.setState((state) => {
+  onPress = item => {
+    this.setState(state => {
       const selected = new Map(state.selected);
       selected.set(
         `${item.title}:${item.author}`,
         !selected.get(`${item.title}:${item.author}`)
-        );
+      );
       return { selected };
     });
-  }
+  };
 
   /**
    * Renders a button to show book filter.
    */
-  renderFilterButton () {
+  renderFilterButton() {
     return (
       <TouchableOpacity
         onPress={() => {
-          this.setState((state) => {
+          this.setState(state => {
             let visible = !state.visible;
             return { visible };
           });
         }}
         style={Styles.filterButton}
       >
-        <Text>Rajaa teoksia { ': ' + this.state.tag }</Text>
+        <Text>Rajaa teoksia {": " + this.state.tag}</Text>
       </TouchableOpacity>
     );
   }
 
-  onFilter = (filter) => {
-    this.books.getBooks()
-      .then((books) => {
-
+  onFilter = filter => {
+    this.books
+      .getBooks()
+      .then(books => {
         let data = books;
 
         // 'Omat kirjat' filter
@@ -197,16 +204,16 @@ export default class TaskBookSelect extends Component {
           tag: filter,
           visible: false
         });
-      }).catch((error) => {
+      })
+      .catch(error => {
         console.log(error);
       });
-  }
+  };
 
-
-  render () {
+  render() {
     return (
       <View style={Styles.mainContainer}>
-        { this.renderFilterButton() }
+        {this.renderFilterButton()}
         <Modal
           animationType="slide"
           transparent={true}
@@ -222,13 +229,21 @@ export default class TaskBookSelect extends Component {
               selectedValue={this.state.tag}
               onValueChange={this.onFilter}
             >
-              <Picker.Item key={0} label={this.defaultFilter} value={this.defaultFilter} />
-              <Picker.Item key={1} label={this.myBooksFilter} value={this.myBooksFilter} />
+              <Picker.Item
+                key={0}
+                label={this.defaultFilter}
+                value={this.defaultFilter}
+              />
+              <Picker.Item
+                key={1}
+                label={this.myBooksFilter}
+                value={this.myBooksFilter}
+              />
               {this.state.tags.map((value, index) => (
                 <Picker.Item key={index} label={value} value={value} />
               ))}
             </Picker>
-            <View style={Styles.spacer}></View>
+            <View style={Styles.spacer} />
             <View style={Styles.container}>
               <TouchableOpacity
                 style={Styles.button}
@@ -237,7 +252,7 @@ export default class TaskBookSelect extends Component {
                     visible: false
                   });
                 }}
-                >
+              >
                 <Text style={Styles.buttonText}>PERUUTA</Text>
               </TouchableOpacity>
             </View>
@@ -251,7 +266,9 @@ export default class TaskBookSelect extends Component {
             <BookListItemSelect
               item={item}
               index={index}
-              selected={!!this.state.selected.get(`${item.title}:${item.author}`)}
+              selected={
+                !!this.state.selected.get(`${item.title}:${item.author}`)
+              }
               onPress={this.onPress}
               navigation={this.props.navigation}
             />
