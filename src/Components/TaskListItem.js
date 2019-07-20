@@ -4,11 +4,11 @@
  * @license MIT (see LICENSE)
  */
 
-import React, { PureComponent } from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
-import { Icon } from 'react-native-elements';
-import PropTypes from 'prop-types';
-import Styles, { Colors } from './Styles';
+import React, { PureComponent } from "react";
+import { Text, View, TouchableOpacity } from "react-native";
+import { Icon } from "react-native-elements";
+import PropTypes from "prop-types";
+import Styles, { Colors } from "../Styles";
 
 /**
  * A row in task list.
@@ -18,22 +18,16 @@ import Styles, { Colors } from './Styles';
  * @license MIT
  */
 export default class TaskListItem extends PureComponent {
-  renderCheck () {
-    return (
-      <Icon
-        name="check"
-        color={Colors.Green}
-        type="material-community"
-      />
-    );
+  renderCheck() {
+    return <Icon name="check" color={Colors.Green} type="material-community" />;
   }
 
-  render () {
+  render() {
     return (
       <TouchableOpacity
         style={Styles.containerNoPadding}
         onPress={() => {
-          this.props.navigation.navigate('TaskDetails', {
+          this.props.navigation.navigate("TaskDetails", {
             task: this.props.item
           });
         }}
@@ -43,9 +37,7 @@ export default class TaskListItem extends PureComponent {
           <Text style={Styles.taskRowDescription} numberOfLines={1}>
             {this.props.item.task}
           </Text>
-          <View>
-            {this.props.renderCheck ? this.renderCheck() : null}
-          </View>
+          <View>{this.props.renderCheck ? this.renderCheck() : null}</View>
         </View>
       </TouchableOpacity>
     );

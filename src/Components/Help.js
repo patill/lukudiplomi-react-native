@@ -4,9 +4,9 @@
  * @license MIT (see LICENSE)
  */
 
-import React, { Component } from 'react';
-import { ScrollView, Text, Image, View } from 'react-native';
-import Styles from './Styles';
+import React, { Component } from "react";
+import { ScrollView, Text, Image, View } from "react-native";
+import Styles from "../Styles";
 
 /**
  */

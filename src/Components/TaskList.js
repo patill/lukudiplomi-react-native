@@ -10,13 +10,13 @@ import { SectionList, View, Text, TouchableOpacity, Modal } from "react-native";
 import { Icon } from "react-native-elements";
 import { Share } from "react-native";
 
-import Downloader from "./Downloader";
-import Parser from "./Parser";
+import Downloader from "../Downloader";
+import Parser from "../Parser";
 import TaskListItem from "./TaskListItem";
-import TaskDatasource from "./Datasources/TaskDatasource";
-import ConfigDatasource from "./Datasources/ConfigDatasource";
-import Styles, { Colors } from "./Styles";
-import BookDatasource from "./Datasources/BookDatasource";
+import TaskDatasource from "../Datasources/TaskDatasource";
+import ConfigDatasource from "../Datasources/ConfigDatasource";
+import Styles, { Colors } from "../Styles";
+import BookDatasource from "../Datasources/BookDatasource";
 
 export default class TaskList extends Component {
   static navigationOptions = {

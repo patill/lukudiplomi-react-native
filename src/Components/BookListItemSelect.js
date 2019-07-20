@@ -7,7 +7,7 @@ import React, { PureComponent } from "react";
 import { Text, View, Image, TouchableOpacity } from "react-native";
 import PropTypes from "prop-types";
 import { Icon } from "react-native-elements";
-import Styles from "./Styles";
+import Styles from "../Styles";
 
 export default class BookListItemSelect extends PureComponent {
   /**
