@@ -34,22 +34,31 @@ $ npm install
 Luo myös Android ja iOS -kansiot seuraavasti:
 
 ```bash
-$ ./node_modules/.bin/react-native eject
+$ ./node_modules/.bin/react-native upgrade --legacy true
 ```
 
-Suorita myös seuraavat komennot:
+Suorita myös seuraava komento:
 
 ```bash
-./node_modules/.bin/react-native link react-native-elements
 ./node_modules/.bin/react-native link react-native-vector-icons
-./node_modules/.bin/react-native link react-native-gesture-handler
-./node_modules/.bin/react-native link react-native-splash-screen
-./node_modules/.bin/react-native link react-navigation
 ```
 
-Viimeisen kohdalla katso myös ohjeet täältä:
+Lisää myös `android/app/build.gradle`-tiedostoon seuraavat rivit:
 
-https://reactnavigation.org/docs/en/getting-started.html
+```gradle
+project.ext.vectoricons = [
+    // Name of the font files you want to copy
+    iconFontNames: [ 'MaterialIcons.ttf', 'MaterialCommunityIcons.ttf' ]
+]
+
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+```
+
+Katso lisätietoja osoitteesta:
+
+- https://github.com/oblador/react-native-vector-icons#option-with-gradle-recommended
+
+otsikon _"Option: With Gradle (recommended)"_ alta.
 
 Ennen kuin jatkat tästä eteenpäin, muista myös muuttaa konfiguraatio-tiedoston osoite `ConfigDatasource.js`-tiedostossa.
 
