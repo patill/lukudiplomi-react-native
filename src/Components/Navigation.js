@@ -103,7 +103,7 @@ const Header = {
 const BookStack = createStackNavigator(
   {
     Home: {
-      screen: BookList,
+      screen: (props) => <BookList {...props} />,
       navigationOptions: MenuButton
     },
     BookDetails: {
