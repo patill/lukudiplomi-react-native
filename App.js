@@ -28,6 +28,18 @@ import ConfigDatasource from './src/Datasources/ConfigDatasource';
  * selection screen where the user can select and save the grade.
  */
 class App extends Component {
+
+  state = {
+    "currentGrade": "state from App.js",
+    "configUri": "",
+    "books": {
+      // TODO: Books
+    },
+    "tasks": {
+      // TODO: Tasks
+    }
+  };
+  
   constructor (props) {
     super(props);
 
