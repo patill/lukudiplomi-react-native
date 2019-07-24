@@ -1,5 +1,15 @@
 # Muuta
 
+## React Native
+
+Jos aikoo syöttää prop-parametrin `App`-komponentista alaspäin, täytyisi ne syöttää todella monen tason lävitse. Vaihtoehtoisia ratkaisutapoja.
+
+- React Native Context API
+- React-Redux
+- Nykyinen menetelmä, jossa tallennetaan `AsyncStorage`en ja päivitetään näkymä aina kun sille saavutaan toisesta näkymästä.
+
+Mikä näistä olisi paras ja miksi?
+
 ## Ongelmia
 
 ### Ongelma sovelluksen nimessä

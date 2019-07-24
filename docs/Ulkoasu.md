@@ -1,5 +1,17 @@
 # Ulkoasu
 
+Sovellus koostuu useasta eri näkymästä (engl. screen):
+
+- Kirjalista
+  - Kirjan tiedot
+- Tehtävälista
+  - Tehtävän tiedot
+    - Kirjalista, jossa voi valita kirjoja tehtävään
+- Omat kirjat
+  - Kirjan tiedot
+
+## Muokkaaminen
+
 Sovelluksen ulkoasun muokkaaminen (mm. värien muuttaminen).
 
 Ulkoasun värejä voi muuttaa `src/Styles.js`-tiedostosta. Tiedoston yläosassa on `Colors`-objekti, jossa on määritelty käytetyt värit.
