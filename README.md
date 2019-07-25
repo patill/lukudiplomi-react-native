@@ -68,6 +68,11 @@ $ ./node_modules/.bin/react-native run-android
 
 Tämä komento luo sovelluspaketin ja asentaa sen emulaattoriin (tai vaihtoehtoisesti laitteeseen).
 
+#### Haumautuksia
+
+Windows-koneilla voi olla tarpeellista, että lähdekoodi ja repostiry sijaitsevat C-asemalla. Ks. https://stackoverflow.com/questions/56551788/react-native-start-fails-on-every-project
+
+
 #### iOS
 
 iOS-versiota on helpointa testata simulaattorissa. Edellyttäen, että _Yleiset_-kohdan vaiheet on suoritettu ja Xcoden uusin versio on asennettu, voidaan sovellus ajaa komennolla
