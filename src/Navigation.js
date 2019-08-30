@@ -66,7 +66,7 @@ const MenuButton = ({navigation}) => ({
                 navigation.navigate('GradeSelect');
               }}
             >
-              <Text style={Styles.heading}>Valitse luokka-aste</Text>
+              <Text style={Styles.heading}>Valitse kirjalista</Text>
             </TouchableOpacity>
             <View style={Styles.spacer}></View>
             <TouchableOpacity

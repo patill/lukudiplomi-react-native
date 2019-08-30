@@ -19,7 +19,7 @@ import Parser from './Parser';
 export default class GradeSelect extends Component {
 
   static navigationOptions = {
-    title: 'Valitse luokka-aste'
+    title: 'Valitse kirjalista'
   };
 
   constructor (props) {
@@ -47,9 +47,9 @@ export default class GradeSelect extends Component {
     return (
       <View style={Styles.mainContainer}>
         <View style={Styles.container}>
-          <Text style={Styles.heading}>Valitse luokka-aste</Text>
+          <Text style={Styles.heading}>Valitse lukudiplomi</Text>
           <View style={Styles.textContainer}>
-            <Text>Valitse luokka-aste, jonka kirjat ja tehtävät haluat käyttöön sovelluksessa.</Text>
+            <Text>Valitse lukudiplomi, jonka kirjat ja tehtävät haluat käyttöön sovelluksessa.</Text>
           </View>
           <View>
             <Picker

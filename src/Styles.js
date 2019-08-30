@@ -81,7 +81,7 @@ const Styles = {
   },
 
   container: {
-    flex: 1,
+    flex: 2,    //Have possibly two lines of text
     padding: 15
   },
 
