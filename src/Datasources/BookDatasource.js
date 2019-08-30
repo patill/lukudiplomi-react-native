@@ -9,7 +9,7 @@ import { AsyncStorage } from 'react-native';
  */
 class BookDatasource {
 
-  // This datasource depends on configuration data and downloader class 
+  // This datasource depends on configuration data and downloader class
   constructor (config, downloader) {
     this.config = config;
     this.downloader = downloader;
@@ -17,7 +17,7 @@ class BookDatasource {
 
   /**
    * Sort books by author
-   * 
+   *
    * See documentation for sort here:
    * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
    *
@@ -39,16 +39,16 @@ class BookDatasource {
     return books;
   }
 
-  // Get books from either the AsyncStorage or from the server; in case of the 
+  // Get books from either the AsyncStorage or from the server; in case of the
   // latter, store also to AsyncStorage.
   getBooks = async () => {
     let gradeName,  // Name of the grade, e.g. "7. luokka"
       gradeData,    // Whole object describing the grade
       settings,     // An array of gradeData objects; all grades available
       data;         // Holder for book data
-    
+
     try {
-      
+
       // Get the current gradeName, e.g. "7. luokka"
       gradeName = await this.config.getCurrentGrade();
 
@@ -60,7 +60,7 @@ class BookDatasource {
 
       // Try to read book data for current gradeName
       data = await AsyncStorage.getItem(`lukudiplomi/${gradeName}`);
-      
+
       // If there's no book data available, read it from the server; the server
       // URI is at gradeData.books.
       if (!data || data.length < 1) {
@@ -68,7 +68,7 @@ class BookDatasource {
         await AsyncStorage.setItem(`lukudiplomi/${gradeName}`, data);
       }
 
-      // The data is currently in string format, so parse it into JSON object 
+      // The data is currently in string format, so parse it into JSON object
       data = JSON.parse(data);
     } catch (error) {
       console.log(error);
@@ -83,13 +83,13 @@ class BookDatasource {
 
   // Toggle bookmarks
   toggleBookmark = async (bookmark) => {
-    
+
     let grade = await this.config.getCurrentGrade();
     let key = `lukudiplomi/${grade}`;
     let books = [];
 
     try {
-      books = JSON.parse(await AsyncStorage.getItem(key)) || []; 
+      books = JSON.parse(await AsyncStorage.getItem(key)) || [];
       books = books.map((book) => {
         // Comparing both, the title and the author is necessary to make books
         // unique; there might be multiple books from same author, so comparing
@@ -98,7 +98,7 @@ class BookDatasource {
           book.isBookmarked = !book.isBookmarked;
         }
         return book;
-      }); 
+      });
 
       // After setting the bookmark flag, save book data back to the storage.
       await AsyncStorage.setItem(key, JSON.stringify(books));
@@ -119,6 +119,20 @@ class BookDatasource {
     let tags = [].concat(...books.map(book => book.tags));
     return new Set(tags.sort());
   }
+
+  /**
+   * Extract all the categories from an array of books
+   *
+   * Each book is an object, which has categories property (an array). And finally
+   * using set to filter out duplicates since sets cannot have them.
+   *
+   * @param {array} books
+   */
+  getCats = (books) => {
+    let cats = [].concat(...books.map(book => book.cats));
+    return new Set(cats.sort());
+  }
+
 }
 
 export default BookDatasource;

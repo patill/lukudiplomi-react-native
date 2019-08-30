@@ -71,6 +71,10 @@ export default class Parser {
         let tags = result[2].split(',')
           .map((item) => item.trim());
         item['tags'] = tags;
+      } else if (result[1] === 'b-cat') {
+        let cats = result[2].split(',')
+        .map((item) => item.trim());
+        item['cats'] = cats;
       } else if (key === undefined) {
         // TODO: This is for non-mapped keywords
         item[result[1]] = result[2];

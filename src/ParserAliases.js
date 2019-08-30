@@ -10,6 +10,7 @@ const ParserAliases = {
   'b-ava': 'availability',
   'b-des': 'description',
   'b-tag': 'tags',
+  'b-cats': 'cats',
   'Lisätietoja': 'additionalInformation',
   'Ohje': 'help'
 };

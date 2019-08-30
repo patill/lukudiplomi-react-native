@@ -22,6 +22,7 @@ export default class BookList extends Component {
 
   myBooksFilter = 'omat kirjat';
   defaultFilter = 'kaikki teokset';
+  defaultCat = 'kaikki tasot';
   static navigationOptions = {
     title: 'Kirjat'
   };
@@ -49,6 +50,8 @@ export default class BookList extends Component {
       visible: false,
       books: [],
       tags: [],
+      cats: [],
+      cat: this.defaultCat,
       tag: this.defaultFilter
     };
   }
@@ -60,16 +63,18 @@ export default class BookList extends Component {
 
   /**
    * Update the books list
-   * 
+   *
    * @param {boolean} shouldUpdateFilter - A flag indicating should the filter be updpated
    */
   updateBooks = (shouldUpdateFilter) => {
 
     let tag = (shouldUpdateFilter ? this.defaultFilter : this.state.tag);
+    let cat = (shouldUpdateFilter ? this.defaultCat : this.state.cat);
     this.books.getBooks()
       .then((books) => {
         let data = books.filter((book) => {
-
+        //if cat is off
+        if (cat === this.defaultCat) {
           // If tag is 'kaikki kirjat', return all of them
           if (tag === this.defaultFilter) return true;
 
@@ -81,37 +86,66 @@ export default class BookList extends Component {
 
           // And final filter is based on tag
           return book.tags.includes(tag);
+        } else {
+          //no tag chosen
+          if (tag === this.defaultFilter)
+            return book.cats.includes(cat);
+
+          if (tag == this.myBooksFilter)
+            return book.cats.includes(cat).filter(book => book.isBookmarked);
+
+            // finally both tag and cat apply
+            return book.cats.includes(cat).filter(book => book.tags.includes(tag));
+
+        }
         });
 
         this.setState({
           books: data,
           tags: [...this.books.getTags(books)],
-          tag: tag
+          tag: tag,
+          cats: [...this.books.getCats(books)],
+          cat: cat
         });
       }).catch((error) => {
-        console.log(error);     
+        console.log(error);
       });
   }
 
-  onFilter = (filter) => {
+  onFilter = (tagFilter, catFilter) => {
     this.books.getBooks()
       .then((books) => {
 
         let data = books;
 
-        // 'Omat kirjat' filter
-        if (filter === this.myBooksFilter) {
-          data = data.filter(book => book.isBookmarked);            
-        } else if (filter === this.defaultFilter) {
-          // a.k.a. books = books; no filtering
+        // Category off:
+        if (catFilter === this.defaultCat) {
+          if (tagFilter === this.myBooksFilter) {
+            data = data.filter(book => book.isBookmarked);
+          } else if (tagFilter === this.defaultFilter) {
+            // a.k.a. books = books; no filtering
+          } else {
+            // Filtering by tag
+            data = data.filter(book => book.tags.includes(tagFilter));
+          }
         } else {
-          // Filtering by tag
-          data = data.filter(book => book.tags.includes(filter));
+          //Filtering by category
+          // 'Omat kirjat' filter
+          if (tagFilter === this.myBooksFilter) {
+            data = data.filter(book => book.isBookmarked).filter(book => book.cats.includes(catFilter));
+          } else if (tagFilter === this.defaultFilter) {
+            // a.k.a. books = books; no filtering by tag
+            data = data.filter(book => book.cats.includes(catFilter));
+          } else {
+            // Filtering by tag
+            data = data.filter(book => book.tags.includes(tagFilter)).filter(book => book.cats.includes(catFilter));
+          }
         }
 
         this.setState({
           books: data,
-          tag: filter,
+          tag: tagFilter,
+          cat: catFilter,
           visible: false
         });
       }).catch((error) => {
@@ -121,7 +155,7 @@ export default class BookList extends Component {
 
   /**
    * Bookmarking handler
-   * 
+   *
    * @param {object} book - A book object
    */
   onBookmark = (book) => {
@@ -145,7 +179,7 @@ export default class BookList extends Component {
         }}
         style={Styles.filterButton}
       >
-        <Text>Rajaa teoksia { ': ' + this.state.tag }</Text>
+        <Text>Rajaa teoksia { ': ' + this.state.tag + ' (' + this.state.cat + ')' }</Text>
       </TouchableOpacity>
     );
   }
@@ -162,21 +196,49 @@ export default class BookList extends Component {
           onRequestClose={() => {}}
         >
           <View style={Styles.modalContent}>
-            <View style={Styles.modalHeadingContainer}>
-              <Text style={Styles.modalHeading}>Rajaa teoksia</Text>
-            </View>
-            <Picker
-              style={Styles.picker}
-              selectedValue={this.state.tag}
-              onValueChange={this.onFilter}
-            >
-              <Picker.Item key={0} label={this.defaultFilter} value={this.defaultFilter} />
-              <Picker.Item key={1} label={this.myBooksFilter} value={this.myBooksFilter} />
-              {this.state.tags.map((value, index) => (
-                <Picker.Item key={index} label={value} value={value} />
-              ))}
-            </Picker>
-            <View style={Styles.spacer}></View>
+          <View style={Styles.modalHeadingContainer}>
+            <Text style={Styles.modalHeading}>Valitse aihelista</Text>
+          </View>
+          <Picker
+            style={Styles.picker}
+            selectedValue={this.state.tag}
+            onValueChange={(itemValue) =>
+                            this.setState({tag: itemValue})}
+          >
+            <Picker.Item key={0} label={this.defaultFilter} value={this.defaultFilter} />
+            <Picker.Item key={1} label={this.myBooksFilter} value={this.myBooksFilter} />
+            {this.state.tags.map((value, index) => (
+              <Picker.Item key={index} label={value} value={value} />
+            ))}
+          </Picker>
+
+
+              <View style={Styles.modalHeadingContainer}>
+                <Text style={Styles.modalHeading}>Valitse taso</Text>
+              </View>
+              <Picker
+                style={Styles.picker}
+                selectedValue={this.state.cat}
+                onValueChange={(itemValue) =>
+                                this.setState({cat: itemValue})}
+              >
+                <Picker.Item key={0} label={this.defaultCat} value={this.defaultCat} />
+                {this.state.cats.map((value, index) => (
+                  <Picker.Item key={index} label={value} value={value} />
+                ))}
+              </Picker>
+              <View style={Styles.spacer}></View>
+              <View style={Styles.container}>
+                <TouchableOpacity
+                  style={Styles.button}
+                  onPress={() => {
+                    this.onFilter(this.state.tag, this.state.cat)
+                  }}
+                  >
+                  <Text style={Styles.buttonText}>KÄYTÄ</Text>
+                </TouchableOpacity>
+              </View>
+
             <View style={Styles.container}>
               <TouchableOpacity
                 style={Styles.button}
