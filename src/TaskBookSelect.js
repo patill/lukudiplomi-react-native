@@ -64,8 +64,11 @@ export default class TaskBookSelect extends Component {
       selected: new Map(),
       visible: false,
       books: [],
+      cats: [],
+      cat: this.defaultFilter,
       tags: [],
-      tag: this.defaultFilter
+      tag: this.defaultFilter,
+      task: this.props.navigation.getParam('item') //TODO: gives only undefined either task or item, works in TaskDetails l. 155 or BookDetails l.60
     };
   }
 
@@ -77,6 +80,16 @@ export default class TaskBookSelect extends Component {
   getTags = (books) => {
     let tags = [].concat(...books.map(book => book.tags));
     return new Set(tags.sort());
+  }
+
+  /**
+   * Extract categories from the array of book objects.
+   *
+   * @param {array} books - An array of book objects
+   */
+  getCats = (books) => {
+    let cats = [].concat(...books.map(book => book.cats));
+    return new Set(cats.sort());
   }
 
   /**
@@ -108,8 +121,9 @@ export default class TaskBookSelect extends Component {
     this.books.getBooks()
       .then((books) => {
         this.setState({
-          books: books,
-          tags: [...this.getTags(books)]
+          books: books,//TODO: this should show only books with the same tags than the style of the task
+          tags: [...this.getTags(books)],
+          cats: [...this.getCats(books)],
         });
       }).catch((error) => {
         console.log(error);
@@ -136,7 +150,8 @@ export default class TaskBookSelect extends Component {
         .then((books) => {
           this.setState({
             books: books,
-            tags: [...this.getTags(books)]
+            tags: [...this.getTags(books)],
+            cats: [...this.getCats(books)]
           });
 
         })
@@ -171,7 +186,7 @@ export default class TaskBookSelect extends Component {
         }}
         style={Styles.filterButton}
       >
-        <Text>Rajaa teoksia { ': ' + this.state.tag }</Text>
+        <Text>Rajaa teoksia { ': ' + this.state.cat }</Text>
       </TouchableOpacity>
     );
   }
@@ -189,12 +204,12 @@ export default class TaskBookSelect extends Component {
           // a.k.a. books = books; no filtering
         } else {
           // Filtering by tag
-          data = data.filter(book => book.tags.includes(filter));
+          data = data.filter(book => book.cats.includes(filter));
         }
 
         this.setState({
           books: data,
-          tag: filter,
+          cat: filter,
           visible: false
         });
       }).catch((error) => {
@@ -219,12 +234,12 @@ export default class TaskBookSelect extends Component {
             </View>
             <Picker
               style={Styles.picker}
-              selectedValue={this.state.tag}
+              selectedValue={this.state.cat}
               onValueChange={this.onFilter}
             >
               <Picker.Item key={0} label={this.defaultFilter} value={this.defaultFilter} />
               <Picker.Item key={1} label={this.myBooksFilter} value={this.myBooksFilter} />
-              {this.state.tags.map((value, index) => (
+              {this.state.cats.map((value, index) => (
                 <Picker.Item key={index} label={value} value={value} />
               ))}
             </Picker>

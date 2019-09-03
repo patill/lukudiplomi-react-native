@@ -147,7 +147,7 @@ export default class TaskList extends Component {
           )}}
           renderSectionHeader={({section: {title}}) => (
             <View>
-              <Text style={Styles.taskRowHeading}>{title === 'group' ? 'Ryhmätehtävät' : 'Henkilökohtaiset tehtävät'}</Text>
+              <Text style={Styles.taskRowHeading}>{title}</Text>
             </View>
           )}
           sections={this.getSections()}

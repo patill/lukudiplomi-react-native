@@ -39,6 +39,7 @@ export default class BookListItemSelect extends PureComponent {
     this.props.onPress(this.props.item);
   }
 
+  //This generates the list item where a book can be selected to be associated to a task
   render = () => {
     return (
         <View style={Styles.bookListRowItem}>
@@ -54,7 +55,7 @@ export default class BookListItemSelect extends PureComponent {
           <View style={Styles.bookInfoView}>
             <Text style={Styles.heading}>{this.props.item.title}</Text>
             <Text style={Styles.subheading}>{this.props.item.author}</Text>
-            <Text style={Styles.subheading}>{this.props.item.tags.join(', ')}</Text>
+            <Text style={Styles.subheading}>{this.props.item.cats.join(', ')}</Text>
           </View>
           <View style={Styles.bookmarkContainer}>
             <TouchableOpacity
