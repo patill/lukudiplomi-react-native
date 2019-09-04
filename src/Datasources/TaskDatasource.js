@@ -192,7 +192,7 @@ class TaskDatasource {
       console.log(error);
     }
 
-    formatted = `Pirkanmaan lukudiplomi: Tehtävälista ja kirjavalinnat (tallennettu ${today})\n\nVuosiluokka: ${grade}\n\nTehtävät:\n\n${tasksFormatted}\n`;
+    formatted = `Porin lukudiplomi: Tehtävälista ja kirjavalinnat (tallennettu ${today})\n\nVuosiluokka: ${grade}\n\nTehtävät:\n\n${tasksFormatted}\n`;
     return formatted || '';
   }
 
@@ -223,7 +223,7 @@ class TaskDatasource {
           return bookForTask.title === book.title && bookForTask.author === book.author
         }) ? true : false;
       });
-      
+
     } catch (error) {
       console.log(error);
     }
