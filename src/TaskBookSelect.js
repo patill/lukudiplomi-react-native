@@ -41,7 +41,7 @@ export default class TaskBookSelect extends Component {
           </TouchableOpacity>
         </View>
       ),
-      title: 'Valitse kirjat'
+      title: 'Valitse kirja'
     }
   };
 
@@ -67,8 +67,7 @@ export default class TaskBookSelect extends Component {
       cats: [],
       cat: this.defaultFilter,
       tags: [],
-      tag: this.defaultFilter,
-      task: this.props.navigation.getParam('item') //TODO: gives only undefined either task or item, works in TaskDetails l. 155 or BookDetails l.60
+      tag: this.defaultFilter
     };
   }
 
@@ -120,10 +119,11 @@ export default class TaskBookSelect extends Component {
   componentDidMount () {
     this.books.getBooks()
       .then((books) => {
+      let set =  books.filter(book => book.tags.includes(this.props.navigation.getParam('task').type));
         this.setState({
-          books: books,//TODO: this should show only books with the same tags than the style of the task
-          tags: [...this.getTags(books)],
-          cats: [...this.getCats(books)],
+          books: set,
+          tags: [...this.getTags(set)],
+          cats: [...this.getCats(set)],
         });
       }).catch((error) => {
         console.log(error);
@@ -148,10 +148,11 @@ export default class TaskBookSelect extends Component {
       this.props.navigation.setParams({shouldUpdate: false});
       this.books.getBooks()
         .then((books) => {
+          let set =  books.filter(book => book.tags.includes(this.props.navigation.getParam('task').type));
           this.setState({
-            books: books,
-            tags: [...this.getTags(books)],
-            cats: [...this.getCats(books)]
+            books: set,
+            tags: [...this.getTags(set)],
+            cats: [...this.getCats(set)]
           });
 
         })
@@ -195,7 +196,7 @@ export default class TaskBookSelect extends Component {
     this.books.getBooks()
       .then((books) => {
 
-        let data = books;
+        let data = books.filter(book => book.tags.includes(this.props.navigation.getParam('task').type));
 
         // 'Omat kirjat' filter
         if (filter === this.myBooksFilter) {

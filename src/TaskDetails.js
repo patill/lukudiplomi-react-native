@@ -27,8 +27,11 @@ export default class TaskDetails extends Component {
   /**
    * Navigation options.
    */
-  static navigationOptions = {
-      title: 'Tehtävän tiedot'
+  static navigationOptions =
+  ({ navigation }) => {
+    return {
+      title: 'Tehtävän tiedot (' + navigation.getParam('task').type + ')',
+    };
   };
 
   constructor (props) {
@@ -54,7 +57,7 @@ export default class TaskDetails extends Component {
     let task = this.props.navigation.getParam('task');
     this.tasks.getBooks(task.num)
       .then((books) => {
-        this.setState({ books: books.data });  
+        this.setState({ books: books.data });
       })
       .catch((error) => {
         console.log(error);
@@ -63,7 +66,7 @@ export default class TaskDetails extends Component {
 
   /**
    * Cancel task
-   * 
+   *
    * Cancelling a task means removing books associated with it.
    */
   onCancel = () => {
@@ -100,7 +103,8 @@ export default class TaskDetails extends Component {
           style={Styles.button}
           onPress={() => {
             this.props.navigation.navigate('TaskBookSelect', {
-              taskNumber: taskNumber
+              taskNumber: taskNumber,
+              task: this.props.navigation.getParam('task')
             });
           }}
           >
@@ -171,4 +175,3 @@ export default class TaskDetails extends Component {
     );
   }
 }
-  
