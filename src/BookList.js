@@ -72,33 +72,33 @@ export default class BookList extends Component {
     let cat = (shouldUpdateFilter ? this.defaultCat : this.state.cat);
     this.books.getBooks()
       .then((books) => {
-        let data = books.filter((book) => {
-        //if cat is off
+        let data = books;
+
+        //cat off
         if (cat === this.defaultCat) {
-          // If tag is 'kaikki kirjat', return all of them
-          if (tag === this.defaultFilter) return true;
-
-          // If tag is 'omat kirjat', return based on whether it is bookmarked
-          // or not.
           if (tag === this.myBooksFilter) {
-            return book.isBookmarked;
+            //bookmarked books
+            data = data.filter(book => book.isBookmarked);
+          } else if (tag === this.defaultFilter) {
+            // no filtering
+          } else {
+            //filter books by tag
+            data = data.filter(book => book.tags.includes(tag));
           }
-
-          // And final filter is based on tag
-          return book.tags.includes(tag);
         } else {
-          //no tag chosen
-          if (tag === this.defaultFilter)
-            return book.cats.includes(cat);
-
-          if (tag == this.myBooksFilter)
-            return book.cats.includes(cat).filter(book => book.isBookmarked);
-
-            // finally both tag and cat apply
-            return book.cats.includes(cat).filter(book => book.tags.includes(tag));
-
+          //cat is on
+          if (tag === this.myBooksFilter) {
+            //filter by category and show bookmrked books
+            data = data.filter(book => book.isBookmarked).filter(book => book.cats.includes(cat));
+          } else if (tag === this.defaultFilter) {
+            // filter only by Category
+            data = data.filter(book => book.cats.includes(cat));
+          } else {
+            // filter by category and tag 
+            data = data.filter(book => book.tags.includes(tag)).filter(book => book.cats.includes(cat));
+          }
         }
-        });
+
 
         this.setState({
           books: data,
