@@ -68,11 +68,11 @@ export default class Parser {
       } else if (/(b-ser-\d+-t)/.test(result[1])) {
         item['alternatives'].push({type: result[1], title: result[2]});
       } else if (result[1] === 'b-tag') {
-        let tags = result[2].split(',')
+        let tags = result[2].split(';')
           .map((item) => item.trim());
         item['tags'] = tags;
       } else if (result[1] === 'b-cat') {
-        let cats = result[2].split(',')
+        let cats = result[2].split(';')
         .map((item) => item.trim());
         item['cats'] = cats;
       } else if (key === undefined) {

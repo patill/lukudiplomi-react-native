@@ -192,7 +192,7 @@ class TaskDatasource {
       console.log(error);
     }
 
-    formatted = `Porin lukudiplomi: Tehtävälista ja kirjavalinnat (tallennettu ${today})\n\nVuosiluokka: ${grade}\n\nTehtävät:\n\n${tasksFormatted}\n`;
+    formatted = `Porin lukudiplomi: Tehtävälista ja kirjavalinnat (tallennettu ${today})\n\nTehtävät:\n\n${tasksFormatted}\n`;
     return formatted || '';
   }
 
