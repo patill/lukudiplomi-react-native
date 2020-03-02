@@ -63,7 +63,8 @@ Kirjatiedosto sisältää kirjojen tiedot samankaltaisina lohkoina, kuin edellä
 [Tuntematon sotilas] {
 	[b-aut]:Linna, Väinö|
 	[b-cov]:https://www.example.com/tuntematon-sotilas.jpg|
-	[b-tag]:sotakirjallisuus, romaani|
+	[b-tag]:sotakirjallisuus; romaani|
+	[b-cat]:Aika ja avaruus|
 	[b-des]:Teoksen kuvausteksti.|
 	[b-ava]:https://www.example.com/saatavuus-tiedot|
 	[b-ser-1]:https://www.example.com/sarjan-muun-osan/saatavuus-tiedot|
@@ -83,10 +84,13 @@ Kentät:
 
 - b-aut: kirjan kirjoittaja (engl. author)
 - b-cov: linkki kirjan kansikuvaan
-- b-tag: lista kirjaan liittyvistä tageista, käytännössä kategoria; erotetaan pilkulla, jos useampia
-- b-des: kuvausteksti kirjasta, voi olla pidempikin teksti
+- b-tag: lista kirjaan liittyvistä tageista, käytännössä kategoria; erotetaan puolipisteellä, jos useampia
+- b-cat: lista kategorioita, joita voidaan käyttää toisena suodatuskriteerina. Ne voivat olla esimerkiksi kirjan lukutasoon liittyvät kategoriat. Erotetaan puolipisteellä, jos useampia
+- b-des: kuvausteksti kirjasta, voi olla pidempikin teksti. Rivinvaihto esitetään muodossa `\\n`
 - b-ava: linkki saatavuustietoihin
 - b-ser-1 ja b-ser-1-t: jos on jokin kirjasarja, niin ensimmäinen on linkki kirjasarjan saatavuustietoihin ja jälkimmäinen otsaketeksti; näitä voi olla useampia, muista vaihtaa vain numero, eli ensimmäinen on `b-ser-1`, toinen `b-ser-2`, jne.
+- additionalInformation voidaan käyttää johonkin huomautukseen, se lukee kuvaustekstin alla otsikoituna Lisätietoja
+- help näytetään otsikolla Ohje kuvaustekstin jälkeen
 
 ## Tehtävät
 
@@ -97,7 +101,7 @@ Tehtävät on esitetty samanmuotoisina lohkoina kuin tämän dokumentin alussa o
 ```
 [0] {
 	[num]:1|
-	[type]:self|
+	[type]:Aika ja avaruus|
 	[task]:Kirjoita samaa tyyliä tavoitellen yksi uusi luku ja sovita se kirjan loppuun.|
 }
 ```
@@ -109,5 +113,5 @@ Hakasulkeissa ensin numerointi - tehtävien indeksointi - nollasta alkava. Täss
 Kentät:
 
 - num: tehtävän numero, ykkösestä alkava numerointi
-- type: tehtävän tyyppi, onko kyseessä yksin vai ryhmätyönä; arvot: self, group
+- type: tehtävän tyyppi, eli mihin aihelistaan tehtävä liittyy. Tulee olla sama merkkijono, kun mitä on käytetty kirjan tag-kentässä
 - task: tehtävän kuvaus vapaana tekstinä
