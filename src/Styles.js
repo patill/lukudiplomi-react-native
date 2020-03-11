@@ -227,6 +227,10 @@ const Styles = {
     flex: 5
   },
 
+  smallSpacer: {
+    flex: 1
+  },
+
   descriptionButton: {
     flex: 1
   },

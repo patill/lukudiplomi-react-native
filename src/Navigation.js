@@ -60,15 +60,10 @@ const MenuButton = ({navigation}) => ({
             >
               <Text style={Styles.heading}>Ohje</Text>
             </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.setParams({visible: false});
-                navigation.navigate('GradeSelect');
-              }}
-            >
-              <Text style={Styles.heading}>Valitse kirjalista</Text>
-            </TouchableOpacity>
-            <View style={Styles.spacer}></View>
+
+
+            <View style={Styles.smallSpacer}></View>
+
             <TouchableOpacity
               style={Styles.button}
               onPress={() => {
