@@ -9,7 +9,7 @@ import {
   createStackNavigator,
   createAppContainer
 } from 'react-navigation';
-import { TouchableOpacity, View, Text, Modal } from 'react-native';
+import { TouchableOpacity, ScrollView, View, Text, Modal, Image } from 'react-native';
 import React from 'react';
 import { Icon } from 'react-native-elements';
 
@@ -51,18 +51,69 @@ const MenuButton = ({navigation}) => ({
       >
         <View style={Styles.modalContent}>
           <View style={Styles.container}>
-
+            <TouchableOpacity
+              style={Styles.navigationButton}
+              onPress={() => {
+                navigation.setParams({visible: false});
+                navigation.navigate('GradeSelect');
+              }}
+            >
+              <Text style={Styles.buttonText}>Vaihda lukudiplomi</Text>
+            </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
                 navigation.setParams({visible: false});
                 navigation.navigate('Help');
               }}
             >
-              <Text style={Styles.heading}>Ohje</Text>
+              <Text style={Styles.heading}>Ohjeet</Text>
             </TouchableOpacity>
+            <ScrollView style={Styles.mainContainer}>
+              <View style={Styles.containerNoPadding}>
+                <Text style={Styles.heading}>Tervetuloa Porin lukudiplomi -sovelluksen käyttäjäksi</Text>
+                <Text style={Styles.text}>Sovellus on tarkoitettu kaikenikäisille alakoululaisille, jotka suorittavat Porin lukudiplomia.</Text>
+                <Text style={Styles.heading}>Aihelistat ja lukutasot</Text>
+
+                <Text style={Styles.text}>Lukudiplomi koostuu 13 kirjalistasta, jotka ovat järjestetty yhden aiheen mukaan. Valitse aina listasta yksi kirja.</Text>
+                <Text style={Styles.text}>Kirjat ovat jaettu kolmeen lukutasoon: 1. Lukutoukka, 2. Kirja-ahmatti ja 3. L.T.P.M.K (luen tosi paljon myös paksuja kirjoja). Voit lukea kirjoja eri tasoista oman taitosi mukaan.</Text>
+
+                <Text style={Styles.heading}>Merkkaa omat kirjat muistilistaan</Text>
+                <Text style={Styles.text}>Voit merkata omat kirjat tähdellä, jolloin löydät ne Omat Kirjat -osiossa.</Text>
+
+                <Text style={Styles.heading}>Tehtävät</Text>
+                <Text style={Styles.text}>Tee yksi tehtävä jokaisesta kirjasta. Valitse tehtävä sen mukaan, millä listalla kirja sijaitsee. Voit rajata näkyvät kirjat myös vain omiin kirjoihin, ja löydät helpommin sen kirjan, josta olet tehnyt tehtävän.</Text>
+                <Text style={Styles.text}>Tehdyt tehtävät voit jakaa kavereiden tai opettajan kanssa vaikka sähköpostilla. Tehtävät suoritetaan kuitenkin erikseen ja palautetaan opettajalle paperilla.</Text>
+                <Text style={Styles.heading}>Lukudiplomitodistus</Text>
+                <Text style={Styles.text}>Kun olet lukenut kirjat ja tehnyt opettajan kanssa sovitut tehtävät, saat opettajalta lukudiplomin.</Text>
+
+                <Text style={Styles.heading}>Lisätietoja</Text>
+                <Text style={Styles.text}>Porin kaupunginkirjasto, nuorten osastot</Text>
+
+                <Text style={Styles.heading}>Tekninen suunnittelu ja toteutus</Text>
+                <Text style={Styles.text}>Till Paala (mukautus Porin vaatimuksille)</Text>
+                <Text style={Styles.text}>Miika Koskela (iOS ja Android versio 2.0)</Text>
+                <Text style={Styles.text}>Samuli Puolakka (Android, versio 1.0)</Text>
+
+                <Text style={Styles.heading}>Yhteistyössä:</Text>
+                <View style={Styles.collaboratorContainer}>
+                  <Image
+                    source={require('../assets/Porin_kirjasto_musta.jpg')}
+                    style={Styles.collaborator}
+                  />
+                  <Text style={Styles.text}>Porin kaupunginkirjasto</Text>
+                </View>
+
+                <View style={Styles.collaboratorContainer}>
+                <Image
+                  source={require('../assets/logo-kv-sininen.jpg')}
+                  style={Styles.collaborator}
+                />
+                  <Text style={Styles.text}>Kirjavälitys</Text>
+                </View>
+               </View>
+            </ScrollView>
 
 
-            <View style={Styles.smallSpacer}></View>
 
             <TouchableOpacity
               style={Styles.button}

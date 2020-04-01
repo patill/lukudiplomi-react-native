@@ -60,7 +60,9 @@ const Styles = {
   // Collaborators / Help
   collaborator: {
     padding: 15,
-    marginBottom: 15
+    marginBottom: 15,
+    resizeMode: 'contain',
+    height: 100
   },
 
   collaboratorContainer: {
@@ -203,6 +205,7 @@ const Styles = {
   button: {
     flex: 0,
     height: 40,
+    marginTop: 10,
     paddingTop: 10,
     paddingBottom: 10,
     paddingLeft: 15,
@@ -218,9 +221,22 @@ const Styles = {
     backgroundColor: Colors.Blue
   },
 
+  navigationButton: {
+    height: 40,
+    paddingLeft: 15,
+    paddingRight: 15,
+    paddingTop: 10,
+    paddingBottom: 10,
+    backgroundColor: Colors.DarkGrey,
+    marginBottom: 10
+  },
+
   buttonText: {
     color: Colors.White,
-    textAlign: 'center'
+    textAlign: 'center',
+    textTransform: 'uppercase',
+    fontWeight: '200'
+
   },
 
   spacer: {

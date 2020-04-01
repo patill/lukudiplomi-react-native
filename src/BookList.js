@@ -20,9 +20,9 @@ import ConfigDatasource from './Datasources/ConfigDatasource';
 
 export default class BookList extends Component {
 
-  myBooksFilter = 'omat kirjat';
-  defaultFilter = 'kaikki teokset';
-  defaultCat = 'kaikki tasot';
+  myBooksFilter = 'Omat kirjat';
+  defaultFilter = 'Kaikki aiheet';
+  defaultCat = 'Kaikki tasot';
   static navigationOptions = {
     title: 'Kirjat'
   };
@@ -94,7 +94,7 @@ export default class BookList extends Component {
             // filter only by Category
             data = data.filter(book => book.cats.includes(cat));
           } else {
-            // filter by category and tag 
+            // filter by category and tag
             data = data.filter(book => book.tags.includes(tag)).filter(book => book.cats.includes(cat));
           }
         }
