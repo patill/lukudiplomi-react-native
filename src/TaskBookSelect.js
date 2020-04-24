@@ -50,8 +50,8 @@ export default class TaskBookSelect extends Component {
 
     let downloader = new Downloader(new Parser());
 
-    this.defaultFilter = 'kaikki teokset';
-    this.myBooksFilter = 'omat kirjat';
+    this.defaultFilter = 'Kaikki teokset';
+    this.myBooksFilter = 'Omat kirjat';
 
     this.config = new ConfigDatasource(downloader);
     this.books = new BookDatasource(this.config, downloader);

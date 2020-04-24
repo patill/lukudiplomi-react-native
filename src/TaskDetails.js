@@ -97,7 +97,7 @@ export default class TaskDetails extends Component {
     return (
       <View style={Styles.taskAddBooksContainer}>
         <Text style={Styles.taskAddBooksInfo}>
-          Merkitse tehtävä tehdyksi valitsemalla siihen kirjat.
+          Merkitse tehtävä tehdyksi valitsemalla siihen kirja.
         </Text>
         <TouchableOpacity
           style={Styles.button}
@@ -108,7 +108,7 @@ export default class TaskDetails extends Component {
             });
           }}
           >
-          <Text style={Styles.buttonText}>VALITSE KIRJAT</Text>
+          <Text style={Styles.buttonText}>VALITSE KIRJA</Text>
         </TouchableOpacity>
       </View>
     );
