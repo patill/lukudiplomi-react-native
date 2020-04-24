@@ -62,7 +62,7 @@ const Styles = {
     padding: 15,
     marginBottom: 15,
     resizeMode: 'contain',
-    height: 100
+    height: 60
   },
 
   collaboratorContainer: {

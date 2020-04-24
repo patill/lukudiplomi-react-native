@@ -71,20 +71,18 @@ const MenuButton = ({navigation}) => ({
             <ScrollView style={Styles.mainContainer}>
               <View style={Styles.containerNoPadding}>
                 <Text style={Styles.heading}>Tervetuloa Porin lukudiplomi -sovelluksen käyttäjäksi</Text>
-                <Text style={Styles.text}>Sovellus on tarkoitettu kaikenikäisille alakoululaisille, jotka suorittavat Porin lukudiplomia.</Text>
+                <Text style={Styles.text}>Lukudiplomi-sovellus on tarkoitettu alakoululaisille, jotka haluavat suorittaa Porin kaupunginkirjaston lukudiplomin.</Text>
                 <Text style={Styles.heading}>Aihelistat ja lukutasot</Text>
 
-                <Text style={Styles.text}>Lukudiplomi koostuu 13 kirjalistasta, jotka ovat järjestetty yhden aiheen mukaan. Valitse aina listasta yksi kirja.</Text>
-                <Text style={Styles.text}>Kirjat ovat jaettu kolmeen lukutasoon: 1. Lukutoukka, 2. Kirja-ahmatti ja 3. L.T.P.M.K (luen tosi paljon myös paksuja kirjoja). Voit lukea kirjoja eri tasoista oman taitosi mukaan.</Text>
+                <Text style={Styles.text}>Lukudiplomin kirjat on jaoteltu aiheen mukaan. Jokaisessa aiheessa on vaikeustasoltaan kolmentasoisia kirjoja: 1. Lukutoukka, 2. Kirja-ahmatti ja 3. L.T.P.M.P.K. (Luen tosi paljon, myös paksuja kirjoja)</Text>
+                <Text style={Styles.text}>Voit valita kirjoja miltä tasolta tahansa, tasot eivät siis ole sidoksissa luokka-asteisiin. Valitse siis itseäsi kiinnostavat kirjat!</Text>
 
-                <Text style={Styles.heading}>Merkkaa omat kirjat muistilistaan</Text>
-                <Text style={Styles.text}>Voit merkata omat kirjat tähdellä, jolloin löydät ne Omat Kirjat -osiossa.</Text>
+                <Text style={Styles.text}>Sovi lukudiplomin suorittamisesta oman opettajasi kanssa. Opettaja kertoo, kuinka monta kirjaa sinun pitää lukea suorittaaksesi lukudiplomin, mutta määrä voi olla esimerkiksi 6-10 kirjaa eri aihelistoilta.</Text>
 
-                <Text style={Styles.heading}>Tehtävät</Text>
-                <Text style={Styles.text}>Tee yksi tehtävä jokaisesta kirjasta. Valitse tehtävä sen mukaan, millä listalla kirja sijaitsee. Voit rajata näkyvät kirjat myös vain omiin kirjoihin, ja löydät helpommin sen kirjan, josta olet tehnyt tehtävän.</Text>
-                <Text style={Styles.text}>Tehdyt tehtävät voit jakaa kavereiden tai opettajan kanssa vaikka sähköpostilla. Tehtävät suoritetaan kuitenkin erikseen ja palautetaan opettajalle paperilla.</Text>
-                <Text style={Styles.heading}>Lukudiplomitodistus</Text>
-                <Text style={Styles.text}>Kun olet lukenut kirjat ja tehnyt opettajan kanssa sovitut tehtävät, saat opettajalta lukudiplomin.</Text>
+                <Text style={Styles.heading}>Merkkaa omat kirjat muistilistaan ja suorita tehtävät</Text>
+                <Text style={Styles.text}>Sovelluksessa voit kerätä lukemasi kirjat Omat kirjat -listaan. Sovelluksesta löydät myös kirjoihin liittyvät tehtävät, jotka pitää tehdä lukudiplomin suorittamiseksi. Voit lähettää listan tekemistäsi tehtävistä opettajalle tai vaikka ystävälle sovelluksen kautta.</Text>
+
+                
 
                 <Text style={Styles.heading}>Lisätietoja</Text>
                 <Text style={Styles.text}>Porin kaupunginkirjasto, nuorten osastot</Text>
@@ -105,10 +103,10 @@ const MenuButton = ({navigation}) => ({
 
                 <View style={Styles.collaboratorContainer}>
                 <Image
-                  source={require('../assets/logo-kv-sininen.jpg')}
+                  source={require('../assets/finna-logo2.png')}
                   style={Styles.collaborator}
                 />
-                  <Text style={Styles.text}>Kirjavälitys</Text>
+                  <Text style={Styles.text}>Finna.fi </Text>
                 </View>
                </View>
             </ScrollView>
