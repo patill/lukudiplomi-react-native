@@ -1,5 +1,5 @@
 {
-  "name": "Porin_lukudiplomi",
+  "name": "PorinLukudiplomi",
   "version": "0.0.2",
   "private": true,
   "scripts": {
@@ -7,10 +7,11 @@
     "test": "jest"
   },
   "dependencies": {
+    "jetifier": "^1.6.5",
     "react": "16.8.6",
-    "react-native": "0.60.3",
+    "react-native": "^0.59.10",
     "react-native-elements": "^1.1.0",
-    "react-native-gesture-handler": "^1.3.0",
+    "react-native-gesture-handler": "^1.6.1",
     "react-native-splash-screen": "^3.2.0",
     "react-native-vector-icons": "^6.6.0",
     "react-navigation": "^3.11.1"
