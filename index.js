@@ -6,4 +6,4 @@ YellowBox.ignoreWarnings([
   'Class RCTCxxModule'
 ]);
 
-AppRegistry.registerComponent('lukudiplomi', () => App);
+AppRegistry.registerComponent('PorinLukudiplomi', () => App);
