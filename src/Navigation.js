@@ -80,9 +80,12 @@ const MenuButton = ({navigation}) => ({
                 <Text style={Styles.text}>Sovi lukudiplomin suorittamisesta oman opettajasi kanssa. Opettaja kertoo, kuinka monta kirjaa sinun pitää lukea suorittaaksesi lukudiplomin, mutta määrä voi olla esimerkiksi 6-10 kirjaa eri aihelistoilta.</Text>
 
                 <Text style={Styles.heading}>Merkkaa omat kirjat muistilistaan ja suorita tehtävät</Text>
-                <Text style={Styles.text}>Sovelluksessa voit kerätä lukemasi kirjat Omat kirjat -listaan. Sovelluksesta löydät myös kirjoihin liittyvät tehtävät, jotka pitää tehdä lukudiplomin suorittamiseksi. Voit lähettää listan tekemistäsi tehtävistä opettajalle tai vaikka ystävälle sovelluksen kautta.</Text>
+                <Text style={Styles.text}>Sovelluksessa voit kerätä lukemasi kirjat Omat kirjat -listaan. Kun painat kirjan vieressä olevaa tähteä, tähti muuttuu keltaiseksi ja kirja siirtyy Omat kirjat -listaan. Voit poistaa kirjan listalta painamalla tähteä uudelleen. Omat kirjat -listan näet alareunan Omat kirjat -valikosta.</Text>
 
-                
+                <Text style={Styles.text}>
+                Sovelluksesta löydät Tehtävät-valikosta myös kirjoihin liittyvät tehtävät, jotka pitää tehdä lukudiplomin suorittamiseksi. Suorita vain yksi tehtävä luettua kirjaa kohti. Avaa tehtävä painamalla tehtävää. Merkitse tehtävä tehdyksi valitsemalla sitä varten lukemasi kirja. Paina punaista Valitse kirja -nappia ja valitse avautuvasta listasta oikea kirja. Tehtävälistauksessa tehtävän kohdalle tulee vihreä merkki, kun tehtävä on tehty.</Text>
+
+                <Text style={Styles.text}>Voit lähettää listan tekemistäsi tehtävistä opettajalle tai vaikka ystävälle sovelluksen kautta. Mene Tehtävät-valikkoon ja paina vihreää jaa-nappia. Valitse haluamasi sovellus, jonka kautta haluat listan lähettää (esim. sähköposti tai WhatsApp) ja valitse sen jälkeen haluamasi vastaanottaja.</Text>
 
                 <Text style={Styles.heading}>Lisätietoja</Text>
                 <Text style={Styles.text}>Porin kaupunginkirjasto, nuorten osastot</Text>
