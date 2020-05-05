@@ -91,6 +91,12 @@ const Styles = {
     flex: 1
   },
 
+  containerHelp: {
+    flex: 2,
+    padding: 15,
+    borderColor: Colors.DarkGrey
+  },
+
   fabMenu: {
     backgroundColor: Colors.White
   },
@@ -186,6 +192,17 @@ const Styles = {
     shadowRadius: 5,
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 1.0
+  },
+
+  modalHelp: {
+    flex: 1,
+    margin: 20,
+    backgroundColor: Colors.White,
+    shadowColor: Colors.Black,
+    shadowRadius: 5,
+    shadowOffset: { width: 10, height: 10 },
+    shadowOpacity: 1.0,
+    borderColor: Colors.DarkGrey
   },
 
   fabModalContent: {

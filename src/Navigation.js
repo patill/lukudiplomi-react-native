@@ -21,7 +21,7 @@ import TaskDetails from './TaskDetails';
 import TaskList from './TaskList';
 import GradeSelect from './GradeSelect';
 import TaskBookSelect from './TaskBookSelect';
-import Help from './Help';
+import Help from './Help.js';
 
 import Styles, { Colors } from './Styles';
 
@@ -49,25 +49,10 @@ const MenuButton = ({navigation}) => ({
         visible={!!navigation.getParam('visible')}
         onRequestClose={() => {}}
       >
-        <View style={Styles.modalContent}>
+        <View style={Styles.modalHelp}>
           <View style={Styles.container}>
-            <TouchableOpacity
-              style={Styles.navigationButton}
-              onPress={() => {
-                navigation.setParams({visible: false});
-                navigation.navigate('GradeSelect');
-              }}
-            >
-              <Text style={Styles.buttonText}>Vaihda lukudiplomi</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.setParams({visible: false});
-                navigation.navigate('Help');
-              }}
-            >
-              <Text style={Styles.heading}>Ohjeet</Text>
-            </TouchableOpacity>
+
+
             <ScrollView style={Styles.mainContainer}>
               <View style={Styles.containerNoPadding}>
                 <Text style={Styles.heading}>Tervetuloa Porin lukudiplomi -sovelluksen käyttäjäksi</Text>
@@ -122,7 +107,7 @@ const MenuButton = ({navigation}) => ({
                 navigation.setParams({visible: false});
               }}
             >
-              <Text style={Styles.buttonText}>PERUUTA</Text>
+              <Text style={Styles.buttonText}>SULJE</Text>
             </TouchableOpacity>
           </View>
         </View>
