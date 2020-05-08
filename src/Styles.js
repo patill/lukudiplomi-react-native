@@ -202,7 +202,8 @@ const Styles = {
     shadowRadius: 5,
     shadowOffset: { width: 10, height: 10 },
     shadowOpacity: 1.0,
-    borderColor: Colors.DarkGrey
+    borderColor: Colors.DarkGrey,
+    elevation: 3
   },
 
   fabModalContent: {
